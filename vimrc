@@ -52,6 +52,7 @@ NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'b3niup/numbers.vim'
+NeoBundle 'rhysd/clever-f.vim'        " Extended f, F, t and T key mappings for Vim.
 
 call neobundle#end()
 
