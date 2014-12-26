@@ -1,0 +1,29 @@
+[user]
+	name = Sergei Antipov
+	email = s.antipov@2gis.ru
+
+[core]
+	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	excludesfile = ~/.cvsignore
+
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch -vv
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	cp = cherry-pick
+	pom = push origin master
+
+[color]
+	ui = true
+
+[push]
+	default = current
+
+[git-up "bundler"]
+	check = false
+	autoinstall = true
+
+[git-up "fetch"]
+	all = true
