@@ -63,6 +63,7 @@ NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'b3niup/numbers.vim'
 NeoBundle 'rhysd/clever-f.vim'        " Extended f, F, t and T key mappings for Vim.
+NeoBundle 'haya14busa/vim-asterisk'   " asterisk.vim provides improved * motions.
 
 call neobundle#end()
 
@@ -278,6 +279,16 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
+"" asterisk.vom plugin
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
 "" Incsearch plugin
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
