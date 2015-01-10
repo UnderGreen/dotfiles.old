@@ -64,6 +64,7 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'b3niup/numbers.vim'
 NeoBundle 'rhysd/clever-f.vim'        " Extended f, F, t and T key mappings for Vim.
 NeoBundle 'haya14busa/vim-asterisk'   " asterisk.vim provides improved * motions.
+NeoBundle 'aserebryakov/filestyle'    " Check filestyle
 
 call neobundle#end()
 
