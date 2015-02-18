@@ -56,7 +56,7 @@ NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'mhinz/vim-startify' 			" Nice screen start
+NeoBundle 'mhinz/vim-startify'        " Nice screen start
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'markcornick/vim-vagrant'
@@ -65,6 +65,8 @@ NeoBundle 'b3niup/numbers.vim'
 NeoBundle 'rhysd/clever-f.vim'        " Extended f, F, t and T key mappings for Vim.
 NeoBundle 'haya14busa/vim-asterisk'   " asterisk.vim provides improved * motions.
 NeoBundle 'aserebryakov/filestyle'    " Check filestyle
+NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to context
+NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
 
 call neobundle#end()
 
