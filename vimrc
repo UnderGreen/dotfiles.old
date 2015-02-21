@@ -67,6 +67,7 @@ NeoBundle 'haya14busa/vim-asterisk'   " asterisk.vim provides improved * motions
 NeoBundle 'aserebryakov/filestyle'    " Check filestyle
 NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to context
 NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
+NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
 
 call neobundle#end()
 
@@ -235,6 +236,9 @@ function s:setupWrapping()
 endfunction
 
 function TrimWhiteSpace()
+  if exists('b:noTrimWhiteSpace')
+    return
+  endif
   " Preparation: save last search, and cursor position.
   let _s=@/
   let l = line(".")
@@ -275,6 +279,7 @@ autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
+  autocmd FileType markdown let b:noTrimWhiteSpace
 endif
 
 set autoread
