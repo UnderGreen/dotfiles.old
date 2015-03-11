@@ -68,6 +68,7 @@ NeoBundle 'aserebryakov/filestyle'    " Check filestyle
 NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to context
 NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
 NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
+NeoBundle 'schickling/vim-bufonly'    " Close all buffers except current
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'idanarye/vim-merginal'     " Fugitive extension to manage and merge Git branches
