@@ -68,6 +68,8 @@ NeoBundle 'aserebryakov/filestyle'    " Check filestyle
 NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to context
 NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
 NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
 
 call neobundle#end()
 
@@ -178,7 +180,7 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 1
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -363,8 +365,11 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
+" vim-session
+let g:session_autosave = 'no'
+
 " vim-airline
-let g:airline_enable_syntastic = 1
+let g:airline#extensions#tabline#enabled = 1
 
 "" Remove trailing whitespace on <leader>S
 nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
