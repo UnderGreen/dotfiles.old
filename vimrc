@@ -70,6 +70,8 @@ NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin 
 NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
+NeoBundle 'idanarye/vim-merginal'     " Fugitive extension to manage and merge Git branches
+NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text editor makes it easy to manage your notes in Vim
 
 call neobundle#end()
 
@@ -365,6 +367,8 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
+" vim-notes
+let g:notes_directories = ['~/Distrib/VIM/notes']
 " vim-session
 let g:session_autosave = 'no'
 
