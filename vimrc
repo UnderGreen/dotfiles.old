@@ -76,7 +76,7 @@ NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text e
 
 " Golang
 NeoBundle 'fatih/vim-go'
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Shougo/neocomplete.vim'
 
 call neobundle#end()
 
@@ -209,7 +209,7 @@ cnoreabbrev Q q
 let g:startify_session_persistence = 1
 let g:startify_change_to_dir = 0
 let g:startify_files_number = 8
-let g:startify_bookmarks = ['~/.vimrc']
+let g:startify_bookmarks = ['~/.vimrc','~/Work/golang/']
 let g:startify_change_to_vcs_root = 1
 let g:rooter_patterns = ['tags', '.git', '.git/']
 let g:startify_custom_header = map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
