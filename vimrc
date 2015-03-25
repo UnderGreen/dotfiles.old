@@ -369,7 +369,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " vim-notes
-let g:notes_directories = ['~/Distrib/VIM/notes']
+let g:notes_directories = ['~/Dropbox/VIM/notes']
 " vim-session
 let g:session_autosave = 'no'
 
