@@ -74,6 +74,10 @@ NeoBundle 'xolox/vim-session'
 NeoBundle 'idanarye/vim-merginal'     " Fugitive extension to manage and merge Git branches
 NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text editor makes it easy to manage your notes in Vim
 
+" Golang
+NeoBundle 'fatih/vim-go'
+NeoBundle 'Valloric/YouCompleteMe'
+
 call neobundle#end()
 
 " Required:
