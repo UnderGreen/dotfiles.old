@@ -148,7 +148,7 @@ set gfn=Ubuntu\ Mono\ 13
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
-    set guifont=Ubuntu\ Mono\ 13
+    set guifont=Menlo\ Regular:h14
     set transparency=7
   endif
 else
