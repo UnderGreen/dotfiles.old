@@ -376,6 +376,8 @@ let g:syntastic_aggregate_errors = 1
 let g:notes_directories = ['~/Dropbox/VIM/notes']
 " vim-session
 let g:session_autosave = 'no'
+let g:session_directory = '~/Dropbox/VIM/'
+let g:session_autoload = 'no'
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
