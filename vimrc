@@ -146,6 +146,7 @@ colorscheme molokai
 
 set mousemodel=popup
 set t_Co=256
+set background=dark
 set nocursorline
 set guioptions=egmrt
 set gfn=Ubuntu\ Mono\ 13
