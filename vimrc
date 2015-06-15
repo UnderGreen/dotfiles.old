@@ -246,7 +246,7 @@ function s:setupWrapping()
 endfunction
 
 function TrimWhiteSpace()
-  if exists('b:noTrimWhiteSpace')
+  if &ft =~ 'markdown'
     return
   endif
   " Preparation: save last search, and cursor position.
@@ -289,7 +289,6 @@ autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
-  autocmd FileType markdown let b:noTrimWhiteSpace
 endif
 
 set autoread
