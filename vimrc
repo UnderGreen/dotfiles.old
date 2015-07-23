@@ -54,7 +54,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sheerun/vim-polyglot'
+"NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'mhinz/vim-startify'        " Nice screen start
 NeoBundle 'tpope/vim-sleuth'
@@ -69,14 +69,16 @@ NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to con
 NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
 NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
 NeoBundle 'schickling/vim-bufonly'    " Close all buffers except current
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-session'
+"NeoBundle 'xolox/vim-misc'
+"NeoBundle 'xolox/vim-session'
 NeoBundle 'idanarye/vim-merginal'     " Fugitive extension to manage and merge Git branches
-NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text editor makes it easy to manage your notes in Vim
+"NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text editor makes it easy to manage your notes in Vim
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Golang
-NeoBundle 'fatih/vim-go'
-NeoBundle 'Shougo/neocomplete.vim'
+"NeoBundle 'fatih/vim-go'
 
 call neobundle#end()
 
@@ -296,6 +298,11 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
+"" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 "" asterisk.vom plugin
 map *   <Plug>(asterisk-*)
 map #   <Plug>(asterisk-#)
