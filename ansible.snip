@@ -1,0 +1,5856 @@
+snippet play
+options head
+       - hosts: ${1:group}
+         gather_facts: ${2:yes}
+         roles:
+
+snippet pushover
+options head
+       - name: ${1:task_description}
+         pushover:
+           msg: ${2}
+           user_key: ${3}
+           app_token: ${4}
+           #####
+           pri: ${5}
+
+snippet nexmo
+options head
+       - name: ${1:task_description}
+         nexmo:
+           src: ${2}
+           dest: ${3}
+           api_secret: ${4}
+           api_key: ${5}
+           msg: ${6}
+           #####
+           validate_certs: ${7:yes}
+
+snippet osx_say
+options head
+       - name: ${1:task_description}
+         osx_say:
+           msg: ${2}
+           #####
+           voice: ${3}
+
+snippet hipchat
+options head
+       - name: ${1:task_description}
+         hipchat:
+           room: ${2}
+           token: ${3}
+           msg: ${4}
+           #####
+           from: ${5:Ansible}
+           color: ${6:yellow}
+           msg_format: ${7:text}
+           api: ${8:https://api.hipchat.com/v1}
+           notify: ${9:yes}
+           validate_certs: ${10:yes}
+
+snippet twilio
+options head
+       - name: ${1:task_description}
+         twilio:
+           from_number: ${2}
+           msg: ${3}
+           auth_token: ${4}
+           to_number: ${5}
+           account_sid: ${6}
+           #####
+           media_url: ${7}
+
+snippet grove
+options head
+       - name: ${1:task_description}
+         grove:
+           message: ${2}
+           channel_token: ${3}
+           #####
+           service: ${4:ansible}
+           url: ${5}
+           icon_url: ${6}
+           validate_certs: ${7:yes}
+
+snippet slack
+options head
+       - name: ${1:task_description}
+         slack:
+           token: ${2}
+           msg: ${3}
+           #####
+           username: ${4:ansible}
+           domain: ${5}
+           color: ${6:normal}
+           icon_url: ${7}
+           parse: ${8}
+           icon_emoji: ${9}
+           link_names: ${10:1}
+           validate_certs: ${11:yes}
+           channel: ${12}
+
+snippet sns
+options head
+       - name: ${1:task_description}
+         sns:
+           topic: ${2}
+           msg: ${3}
+           #####
+           aws_secret_key: ${4:None}
+           aws_access_key: ${5:None}
+           http: ${6}
+           sqs: ${7}
+           region: ${8}
+           sms: ${9}
+           https: ${10}
+           email: ${11}
+           subject: ${12}
+
+snippet hall
+options head
+       - name: ${1:task_description}
+         hall:
+           msg: ${2}
+           room_token: ${3}
+           title: ${4}
+           #####
+           picture: ${5}
+
+snippet mqtt
+options head
+       - name: ${1:task_description}
+         mqtt:
+           topic: ${2}
+           payload: ${3}
+           #####
+           username: ${4}
+           qos: ${5}
+           port: ${6:1883}
+           server: ${7:localhost}
+           client_id: ${8:hostname + pid}
+           retain: ${9}
+           password: ${10}
+
+snippet flowdock
+options head
+       - name: ${1:task_description}
+         flowdock:
+           type: ${2}
+           token: ${3}
+           msg: ${4}
+           #####
+           from_name: ${5}
+           from_address: ${6}
+           tags: ${7}
+           external_user_name: ${8}
+           project: ${9}
+           source: ${10}
+           link: ${11}
+           reply_to: ${12}
+           subject: ${13}
+           validate_certs: ${14:yes}
+
+snippet mail
+options head
+       - name: ${1:task_description}
+         mail:
+           subject: ${2}
+           #####
+           body: ${3:$subject}
+           username: ${4}
+           from: ${5:root}
+           to: ${6:root}
+           headers: ${7}
+           cc: ${8}
+           charset: ${9:us-ascii}
+           bcc: ${10}
+           attach: ${11}
+           host: ${12:localhost}
+           subtype: ${13:plain}
+           password: ${14}
+           port: ${15:25}
+
+snippet jabber
+options head
+       - name: ${1:task_description}
+         jabber:
+           to: ${2}
+           user: ${3}
+           msg: ${4}
+           password: ${5}
+           #####
+           host: ${6}
+           encoding: ${7}
+           port: ${8:5222}
+
+snippet sendgrid
+options head
+       - name: ${1:task_description}
+         sendgrid:
+           username: ${2}
+           to_addresses: ${3}
+           password: ${4}
+           from_address: ${5}
+           subject: ${6}
+           #####
+
+snippet irc
+options head
+       - name: ${1:task_description}
+         irc:
+           msg: ${2}
+           channel: ${3}
+           #####
+           key: ${4}
+           passwd: ${5}
+           color: ${6:none}
+           server: ${7:localhost}
+           topic: ${8}
+           nick: ${9:ansible}
+           nick_to: ${10}
+           timeout: ${11:30}
+           use_ssl: ${12}
+           port: ${13:6667}
+
+snippet campfire
+options head
+       - name: ${1:task_description}
+         campfire:
+           msg: ${2}
+           token: ${3}
+           subscription: ${4}
+           room: ${5}
+           #####
+           notify: ${6}
+
+snippet pushbullet
+options head
+       - name: ${1:task_description}
+         pushbullet:
+           title: ${2}
+           api_key: ${3}
+           #####
+           body: ${4}
+           device: ${5}
+           push_type: ${6:note}
+           channel: ${7}
+
+snippet typetalk
+options head
+       - name: ${1:task_description}
+         typetalk:
+           topic: ${2}
+           client_secret: ${3}
+           client_id: ${4}
+           msg: ${5}
+           #####
+
+snippet rabbitmq_policy
+options head
+       - name: ${1:task_description}
+         rabbitmq_policy:
+           name: ${2}
+           tags: ${3}
+           pattern: ${4}
+           #####
+           node: ${5:rabbit}
+           priority: ${6}
+           state: ${7:present}
+           vhost: ${8:/}
+
+snippet rabbitmq_queue
+options head
+       - name: ${1:task_description}
+         rabbitmq_queue:
+           name: ${2}
+           #####
+           login_port: ${3:15672}
+           dead_letter_exchange: ${4:None}
+           durable: ${5:True}
+           login_user: ${6:guest}
+           login_host: ${7:localhost}
+           login_password: ${8}
+           vhost: ${9:/}
+           state: ${10:present}
+           max_length: ${11:no limit}
+           arguments: ${12}
+           message_ttl: ${13:forever}
+           auto_expires: ${14:forever}
+           dead_letter_routing_key: ${15:None}
+           auto_delete: ${16}
+
+snippet rabbitmq_parameter
+options head
+       - name: ${1:task_description}
+         rabbitmq_parameter:
+           name: ${2}
+           component: ${3}
+           #####
+           node: ${4:rabbit}
+           vhost: ${5:/}
+           state: ${6:present}
+           value: ${7}
+
+snippet rabbitmq_binding
+options head
+       - name: ${1:task_description}
+         rabbitmq_binding:
+           name: ${2}
+           destination: ${3}
+           destination_type: ${4}
+           #####
+           login_port: ${5:15672}
+           login_user: ${6:guest}
+           login_host: ${7:localhost}
+           routing_key: ${8:#}
+           vhost: ${9:/}
+           state: ${10:present}
+           arguments: ${11}
+           login_password: ${12}
+
+snippet rabbitmq_exchange
+options head
+       - name: ${1:task_description}
+         rabbitmq_exchange:
+           name: ${2}
+           #####
+           login_port: ${3:15672}
+           login_user: ${4:guest}
+           login_host: ${5:localhost}
+           durable: ${6:True}
+           exchange_type: ${7:direct}
+           vhost: ${8:/}
+           state: ${9:present}
+           internal: ${10}
+           arguments: ${11}
+           login_password: ${12}
+           auto_delete: ${13}
+
+snippet rabbitmq_plugin
+options head
+       - name: ${1:task_description}
+         rabbitmq_plugin:
+           names: ${2}
+           #####
+           state: ${3:enabled}
+           new_only: ${4:no}
+           prefix: ${5}
+
+snippet rabbitmq_vhost
+options head
+       - name: ${1:task_description}
+         rabbitmq_vhost:
+           name: ${2}
+           #####
+           node: ${3:rabbit}
+           tracing: ${4:no}
+           state: ${5:present}
+
+snippet rabbitmq_user
+options head
+       - name: ${1:task_description}
+         rabbitmq_user:
+           user: ${2}
+           #####
+           node: ${3:rabbit}
+           force: ${4:no}
+           tags: ${5}
+           read_priv: ${6:^$}
+           write_priv: ${7:^$}
+           state: ${8:present}
+           configure_priv: ${9:^$}
+           vhost: ${10:/}
+           password: ${11}
+
+snippet postgresql_lang
+options head
+       - name: ${1:task_description}
+         postgresql_lang:
+           lang: ${2}
+           #####
+           force_trust: ${3}
+           login_user: ${4:postgres}
+           login_host: ${5:localhost}
+           db: ${6}
+           cascade: ${7}
+           state: ${8:present}
+           login_password: ${9}
+           trust: ${10}
+           fail_on_drop: ${11:yes}
+           port: ${12:5432}
+
+snippet postgresql_ext
+options head
+       - name: ${1:task_description}
+         postgresql_ext:
+           name: ${2}
+           db: ${3}
+           #####
+           state: ${4:present}
+           login_password: ${5}
+           login_user: ${6}
+           login_host: ${7:localhost}
+           port: ${8:5432}
+
+snippet riak
+options head
+       - name: ${1:task_description}
+         riak:
+           #####
+           target_node: ${2:riak@127.0.0.1}
+           config_dir: ${3:/etc/riak}
+           wait_for_service: ${4:None}
+           http_conn: ${5:127.0.0.1:8098}
+           wait_for_ring: ${6}
+           wait_for_handoffs: ${7}
+           command: ${8}
+           validate_certs: ${9:yes}
+
+snippet redis
+options head
+       - name: ${1:task_description}
+         redis:
+           command: ${2}
+           #####
+           login_port: ${3:6379}
+           name: ${4}
+           flush_mode: ${5:all}
+           master_host: ${6}
+           login_host: ${7:localhost}
+           master_port: ${8}
+           db: ${9}
+           value: ${10}
+           login_password: ${11}
+           slave_mode: ${12:slave}
+
+snippet mongodb_user
+options head
+       - name: ${1:task_description}
+         mongodb_user:
+           name: ${2}
+           database: ${3}
+           #####
+           login_port: ${4:27017}
+           update_password: ${5:always}
+           roles: ${6:readWrite}
+           login_user: ${7}
+           login_host: ${8:localhost}
+           ssl: ${9}
+           state: ${10:present}
+           login_password: ${11}
+           password: ${12}
+           replica_set: ${13}
+
+snippet mysql_replication
+options head
+       - name: ${1:task_description}
+         mysql_replication:
+           #####
+           master_ssl_cert: ${2}
+           master_auto_position: ${3}
+           master_log_file: ${4}
+           login_user: ${5}
+           login_host: ${6}
+           master_port: ${7}
+           master_host: ${8}
+           master_ssl_ca: ${9}
+           login_unix_socket: ${10}
+           master_connect_retry: ${11}
+           master_user: ${12}
+           login_password: ${13}
+           master_ssl_cipher: ${14}
+           master_password: ${15}
+           relay_log_file: ${16}
+           login_port: ${17:3306}
+           master_ssl: ${18}
+           master_ssl_key: ${19}
+           master_ssl_capath: ${20}
+           mode: ${21:getslave}
+           master_log_pos: ${22}
+           relay_log_pos: ${23}
+
+snippet vertica_role
+options head
+       - name: ${1:task_description}
+         vertica_role:
+           name: ${2}
+           #####
+           assigned_roles: ${3}
+           login_user: ${4:dbadmin}
+           db: ${5}
+           cluster: ${6:localhost}
+           state: ${7:present}
+           login_password: ${8}
+           port: ${9:5433}
+
+snippet vertica_configuration
+options head
+       - name: ${1:task_description}
+         vertica_configuration:
+           name: ${2}
+           value: ${3}
+           #####
+           cluster: ${4:localhost}
+           login_password: ${5}
+           login_user: ${6:dbadmin}
+           db: ${7}
+           port: ${8:5433}
+
+snippet vertica_schema
+options head
+       - name: ${1:task_description}
+         vertica_schema:
+           name: ${2}
+           #####
+           create_roles: ${3}
+           login_user: ${4:dbadmin}
+           db: ${5}
+           usage_roles: ${6}
+           cluster: ${7:localhost}
+           state: ${8:present}
+           login_password: ${9}
+           owner: ${10}
+           port: ${11:5433}
+
+snippet vertica_facts
+options head
+       - name: ${1:task_description}
+         vertica_facts:
+           #####
+           login_user: ${2:dbadmin}
+           cluster: ${3:localhost}
+           db: ${4}
+           port: ${5:5433}
+           login_password: ${6}
+
+snippet vertica_user
+options head
+       - name: ${1:task_description}
+         vertica_user:
+           name: ${2}
+           #####
+           profile: ${3}
+           resource_pool: ${4}
+           roles: ${5}
+           login_user: ${6:dbadmin}
+           ldap: ${7}
+           db: ${8}
+           cluster: ${9:localhost}
+           state: ${10:present}
+           login_password: ${11}
+           password: ${12}
+           expired: ${13}
+           port: ${14:5433}
+
+snippet gluster_volume
+options head
+       - name: ${1:task_description}
+         gluster_volume:
+           name: ${2}
+           state: ${3}
+           #####
+           force: ${4}
+           replicas: ${5}
+           bricks: ${6}
+           quota: ${7}
+           stripes: ${8}
+           cluster: ${9}
+           start_on_create: ${10}
+           directory: ${11}
+           host: ${12}
+           rebalance: ${13:no}
+           options: ${14}
+           transport: ${15:tcp}
+
+snippet open_iscsi
+options head
+       - name: ${1:task_description}
+         open_iscsi:
+           #####
+           auto_node_startup: ${2}
+           target: ${3}
+           show_nodes: ${4}
+           node_auth: ${5:CHAP}
+           node_pass: ${6}
+           discover: ${7}
+           portal: ${8}
+           login: ${9}
+           node_user: ${10}
+           port: ${11:3260}
+
+snippet modprobe
+options head
+       - name: ${1:task_description}
+         modprobe:
+           name: ${2}
+           #####
+           state: ${3:present}
+           params: ${4}
+
+snippet alternatives
+options head
+       - name: ${1:task_description}
+         alternatives:
+           path: ${2}
+           name: ${3}
+           #####
+           link: ${4}
+
+snippet facter
+options head
+       - name: ${1:task_description}
+         facter:
+           #####
+
+snippet ohai
+options head
+       - name: ${1:task_description}
+         ohai:
+           #####
+
+snippet at
+options head
+       - name: ${1:task_description}
+         at:
+           count: ${2}
+           units: ${3}
+           #####
+           state: ${4:present}
+           command: ${5}
+           unique: ${6}
+           script_file: ${7}
+
+snippet cronvar
+options head
+       - name: ${1:task_description}
+         cronvar:
+           name: ${2}
+           #####
+           insertbefore: ${3}
+           cron_file: ${4}
+           value: ${5}
+           state: ${6:present}
+           user: ${7:root}
+           insertafter: ${8}
+           backup: ${9}
+
+snippet svc
+options head
+       - name: ${1:task_description}
+         svc:
+           name: ${2}
+           #####
+           service_dir: ${3:/service}
+           downed: ${4}
+           enabled: ${5}
+           state: ${6}
+           service_src: ${7}
+
+snippet puppet
+options head
+       - name: ${1:task_description}
+         puppet:
+           #####
+           environment: ${2:None}
+           facts: ${3:None}
+           timeout: ${4:30m}
+           puppetmaster: ${5:None}
+           show_diff: ${6}
+           facter_basename: ${7:ansible}
+           manifest: ${8:None}
+
+snippet firewalld
+options head
+       - name: ${1:task_description}
+         firewalld:
+           state: ${2}
+           permanent: ${3}
+           #####
+           zone: ${4:system-default(public)}
+           service: ${5}
+           immediate: ${6}
+           source: ${7}
+           timeout: ${8}
+           port: ${9}
+           rich_rule: ${10}
+
+snippet known_hosts
+options head
+       - name: ${1:task_description}
+         known_hosts:
+           name: ${2}
+           #####
+           path: ${3:(homedir)+/.ssh/known_hosts}
+           state: ${4:present}
+           key: ${5}
+
+snippet ufw
+options head
+       - name: ${1:task_description}
+         ufw:
+           #####
+           direction: ${2}
+           from_port: ${3}
+           to_ip: ${4:any}
+           to_port: ${5}
+           from_ip: ${6:any}
+           interface: ${7}
+           name: ${8}
+           insert: ${9}
+           logging: ${10}
+           log: ${11}
+           proto: ${12}
+           route: ${13}
+           rule: ${14}
+           state: ${15}
+           policy: ${16}
+           delete: ${17}
+
+snippet debconf
+options head
+       - name: ${1:task_description}
+         debconf:
+           name: ${2}
+           #####
+           value: ${3}
+           vtype: ${4}
+           question: ${5}
+           unseen: ${6}
+
+snippet locale_gen
+options head
+       - name: ${1:task_description}
+         locale_gen:
+           name: ${2}
+           #####
+           state: ${3:present}
+
+snippet crypttab
+options head
+       - name: ${1:task_description}
+         crypttab:
+           state: ${2}
+           name: ${3}
+           #####
+           backing_device: ${4}
+           path: ${5:/etc/crypttab}
+           password: ${6:none}
+           opts: ${7}
+
+snippet kernel_blacklist
+options head
+       - name: ${1:task_description}
+         kernel_blacklist:
+           name: ${2}
+           #####
+           blacklist_file: ${3}
+           state: ${4:present}
+
+snippet capabilities
+options head
+       - name: ${1:task_description}
+         capabilities:
+           capability: ${2}
+           path: ${3}
+           #####
+           state: ${4:present}
+
+snippet getent
+options head
+       - name: ${1:task_description}
+         getent:
+           database: ${2}
+           #####
+           fail_key: ${3:True}
+           split: ${4:None}
+           key: ${5}
+
+snippet lvol
+options head
+       - name: ${1:task_description}
+         lvol:
+           lv: ${2}
+           vg: ${3}
+           #####
+           state: ${4:present}
+           force: ${5:no}
+           opts: ${6}
+           size: ${7}
+
+snippet zfs
+options head
+       - name: ${1:task_description}
+         zfs:
+           state: ${2}
+           name: ${3}
+           #####
+           origin: ${4}
+           setuid: ${5}
+           zoned: ${6}
+           primarycache: ${7}
+           logbias: ${8}
+           sync: ${9}
+           copies: ${10}
+           sharenfs: ${11}
+           sharesmb: ${12}
+           canmount: ${13}
+           mountpoint: ${14}
+           casesensitivity: ${15}
+           utf8only: ${16}
+           xattr: ${17}
+           compression: ${18}
+           shareiscsi: ${19}
+           aclmode: ${20}
+           exec: ${21}
+           dedup: ${22}
+           aclinherit: ${23}
+           readonly: ${24}
+           normalization: ${25}
+           jailed: ${26}
+           secondarycache: ${27}
+           refquota: ${28}
+           quota: ${29}
+           volsize: ${30}
+           vscan: ${31}
+           reservation: ${32}
+           atime: ${33}
+           recordsize: ${34}
+           volblocksize: ${35}
+           checksum: ${36}
+           devices: ${37}
+           nbmand: ${38}
+           refreservation: ${39}
+           snapdir: ${40}
+
+snippet lvg
+options head
+       - name: ${1:task_description}
+         lvg:
+           vg: ${2}
+           #####
+           vg_options: ${3}
+           pvs: ${4}
+           force: ${5:no}
+           pesize: ${6:4}
+           state: ${7:present}
+
+snippet filesystem
+options head
+       - name: ${1:task_description}
+         filesystem:
+           dev: ${2}
+           fstype: ${3}
+           #####
+           resizefs: ${4:no}
+           force: ${5:no}
+           opts: ${6}
+
+snippet osx_defaults
+options head
+       - name: ${1:task_description}
+         osx_defaults:
+           key: ${2}
+           #####
+           domain: ${3:NSGlobalDomain}
+           array_add: ${4}
+           type: ${5:string}
+           state: ${6:present}
+           value: ${7}
+
+snippet win_iis_webapppool
+options head
+       - name: ${1:task_description}
+         win_iis_webapppool:
+           name: ${2}
+           #####
+           attributes: ${3}
+           state: ${4}
+
+snippet win_chocolatey
+options head
+       - name: ${1:task_description}
+         win_chocolatey:
+           name: ${2}
+           #####
+           source: ${3}
+           state: ${4:present}
+           upgrade: ${5}
+           force: ${6}
+           version: ${7}
+
+snippet win_iis_webapplication
+options head
+       - name: ${1:task_description}
+         win_iis_webapplication:
+           name: ${2}
+           site: ${3}
+           #####
+           state: ${4}
+           application_pool: ${5}
+           physical_path: ${6}
+
+snippet win_unzip
+options head
+       - name: ${1:task_description}
+         win_unzip:
+           dest: ${2}
+           src: ${3}
+           #####
+           recurse: ${4}
+           creates: ${5}
+           rm: ${6}
+
+snippet win_regedit
+options head
+       - name: ${1:task_description}
+         win_regedit:
+           key: ${2}
+           value: ${3}
+           #####
+           datatype: ${4:string}
+           state: ${5:present}
+           data: ${6}
+
+snippet win_iis_webbinding
+options head
+       - name: ${1:task_description}
+         win_iis_webbinding:
+           name: ${2}
+           #####
+           protocol: ${3}
+           certificate_hash: ${4}
+           ip: ${5}
+           host_header: ${6}
+           state: ${7}
+           port: ${8}
+           certificate_store_name: ${9:My}
+
+snippet win_updates
+options head
+       - name: ${1:task_description}
+         win_updates:
+           #####
+           category: ${2:critical}
+
+snippet win_iis_website
+options head
+       - name: ${1:task_description}
+         win_iis_website:
+           name: ${2}
+           #####
+           application_pool: ${3}
+           parameters: ${4}
+           ip: ${5}
+           physical_path: ${6}
+           hostname: ${7}
+           ssl: ${8}
+           state: ${9}
+           port: ${10}
+
+snippet win_iis_virtualdirectory
+options head
+       - name: ${1:task_description}
+         win_iis_virtualdirectory:
+           name: ${2}
+           #####
+           application: ${3}
+           state: ${4}
+           physical_path: ${5}
+           site: ${6}
+
+snippet win_scheduled_task
+options head
+       - name: ${1:task_description}
+         win_scheduled_task:
+           name: ${2}
+           #####
+           enabled: ${3:True}
+
+snippet win_environment
+options head
+       - name: ${1:task_description}
+         win_environment:
+           name: ${2:no default}
+           level: ${3:no default}
+           #####
+           state: ${4:present}
+           value: ${5:no default}
+
+snippet consul
+options head
+       - name: ${1:task_description}
+         consul:
+           state: ${2}
+           #####
+           tags: ${3:None}
+           check_id: ${4:None}
+           service_name: ${5}
+           notes: ${6:None}
+           interval: ${7:None}
+           script: ${8:None}
+           host: ${9:localhost}
+           check_name: ${10:None}
+           token: ${11:None}
+           ttl: ${12:None}
+           service_id: ${13:service_name if supplied}
+           service_port: ${14}
+           port: ${15:8500}
+
+snippet consul_session
+options head
+       - name: ${1:task_description}
+         consul_session:
+           #####
+           node: ${2:None}
+           datacenter: ${3:None}
+           name: ${4:None}
+           state: ${5:present}
+           checks: ${6:None}
+           delay: ${7:15s}
+           host: ${8:localhost}
+           port: ${9:8500}
+
+snippet consul_acl
+options head
+       - name: ${1:task_description}
+         consul_acl:
+           #####
+           name: ${2}
+           rules: ${3}
+           state: ${4}
+           token: ${5}
+           mgmt_token: ${6}
+           host: ${7:localhost}
+           type: ${8}
+           port: ${9:8500}
+
+snippet consul_kv
+options head
+       - name: ${1:task_description}
+         consul_kv:
+           value: ${2}
+           key: ${3}
+           #####
+           cas: ${4:None}
+           recurse: ${5}
+           token: ${6:None}
+           state: ${7:present}
+           session: ${8:None}
+           flags: ${9:None}
+           host: ${10:localhost}
+           port: ${11:8500}
+
+snippet newrelic_deployment
+options head
+       - name: ${1:task_description}
+         newrelic_deployment:
+           token: ${2}
+           #####
+           application_id: ${3}
+           description: ${4}
+           changelog: ${5}
+           appname: ${6}
+           environment: ${7}
+           user: ${8}
+           revision: ${9}
+           validate_certs: ${10:yes}
+           app_name: ${11}
+
+snippet sensu_check
+options head
+       - name: ${1:task_description}
+         sensu_check:
+           name: ${2}
+           command: ${3}
+           #####
+           handle: ${4:True}
+           subscribers: ${5}
+           metric: ${6}
+           subdue_begin: ${7}
+           standalone: ${8}
+           dependencies: ${9}
+           refresh: ${10}
+           low_flap_threshold: ${11}
+           aggregate: ${12}
+           path: ${13:/etc/sensu/conf.d/checks.json}
+           handlers: ${14}
+           backup: ${15}
+           interval: ${16}
+           publish: ${17:True}
+           state: ${18:present}
+           high_flap_threshold: ${19}
+           timeout: ${20:10}
+           subdue_end: ${21}
+           occurrences: ${22:1}
+
+snippet zabbix_maintenance
+options head
+       - name: ${1:task_description}
+         zabbix_maintenance:
+           name: ${2}
+           login_user: ${3}
+           server_url: ${4}
+           login_password: ${5}
+           desc: ${6:Created by Ansible}
+           #####
+           host_names: ${7}
+           state: ${8:present}
+           host_groups: ${9}
+           collect_data: ${10:true}
+           minutes: ${11:10}
+
+snippet datadog_monitor
+options head
+       - name: ${1:task_description}
+         datadog_monitor:
+           name: ${2}
+           app_key: ${3}
+           state: ${4}
+           api_key: ${5}
+           #####
+           notify_audit: ${6}
+           silenced: ${7}
+           no_data_timeframe: ${8:2x timeframe for metric, 2 minutes for service}
+           notify_no_data: ${9}
+           renotify_interval: ${10}
+           escalation_message: ${11}
+           query: ${12}
+           message: ${13}
+           type: ${14}
+           thresholds: ${15:{'warning': 1, 'ok': 1, 'critical': 1}}
+           timeout_h: ${16}
+
+snippet boundary_meter
+options head
+       - name: ${1:task_description}
+         boundary_meter:
+           apikey: ${2}
+           apiid: ${3}
+           name: ${4}
+           #####
+           state: ${5:True}
+           validate_certs: ${6:yes}
+
+snippet datadog_event
+options head
+       - name: ${1:task_description}
+         datadog_event:
+           text: ${2}
+           title: ${3}
+           api_key: ${4}
+           #####
+           date_happened: ${5:now}
+           alert_type: ${6:info}
+           tags: ${7}
+           priority: ${8:normal}
+           aggregation_key: ${9}
+           validate_certs: ${10:yes}
+
+snippet rollbar_deployment
+options head
+       - name: ${1:task_description}
+         rollbar_deployment:
+           environment: ${2}
+           token: ${3}
+           revision: ${4}
+           #####
+           comment: ${5}
+           rollbar_user: ${6}
+           url: ${7:https://api.rollbar.com/api/1/deploy/}
+           user: ${8}
+           validate_certs: ${9:yes}
+
+snippet bigpanda
+options head
+       - name: ${1:task_description}
+         bigpanda:
+           component: ${2}
+           token: ${3}
+           state: ${4}
+           version: ${5}
+           #####
+           description: ${6}
+           url: ${7:https://api.bigpanda.io}
+           hosts: ${8:machine's hostname}
+           env: ${9}
+           owner: ${10}
+           validate_certs: ${11:yes}
+
+snippet circonus_annotation
+options head
+       - name: ${1:task_description}
+         circonus_annotation:
+           category: ${2}
+           description: ${3}
+           title: ${4}
+           api_key: ${5}
+           #####
+           start: ${6}
+           duration: ${7}
+           stop: ${8}
+
+snippet zabbix_screen
+options head
+       - name: ${1:task_description}
+         zabbix_screen:
+           zabbix_screens: ${2}
+           login_user: ${3}
+           server_url: ${4}
+           login_password: ${5}
+           #####
+           timeout: ${6:10}
+
+snippet nagios
+options head
+       - name: ${1:task_description}
+         nagios:
+           action: ${2}
+           command: ${3}
+           services: ${4}
+           #####
+           comment: ${5:Scheduling downtime}
+           servicegroup: ${6}
+           author: ${7:Ansible}
+           host: ${8}
+           minutes: ${9:30}
+           cmdfile: ${10:auto-detected}
+
+snippet uptimerobot
+options head
+       - name: ${1:task_description}
+         uptimerobot:
+           monitorid: ${2}
+           state: ${3}
+           apikey: ${4}
+           #####
+
+snippet pingdom
+options head
+       - name: ${1:task_description}
+         pingdom:
+           checkid: ${2}
+           passwd: ${3}
+           state: ${4}
+           uid: ${5}
+           key: ${6}
+           #####
+
+snippet librato_annotation
+options head
+       - name: ${1:task_description}
+         librato_annotation:
+           links: ${2}
+           title: ${3}
+           api_key: ${4}
+           user: ${5}
+           #####
+           description: ${6}
+           start_time: ${7}
+           name: ${8}
+           source: ${9}
+           end_time: ${10}
+
+snippet zabbix_host
+options head
+       - name: ${1:task_description}
+         zabbix_host:
+           login_user: ${2}
+           server_url: ${3}
+           host_name: ${4}
+           login_password: ${5}
+           #####
+           status: ${6:enabled}
+           host_groups: ${7}
+           interfaces: ${8}
+           state: ${9:present}
+           timeout: ${10:10}
+           link_templates: ${11:None}
+           proxy: ${12:None}
+
+snippet airbrake_deployment
+options head
+       - name: ${1:task_description}
+         airbrake_deployment:
+           environment: ${2}
+           token: ${3}
+           #####
+           repo: ${4}
+           user: ${5}
+           url: ${6:https://airbrake.io/deploys}
+           validate_certs: ${7:yes}
+           revision: ${8}
+
+snippet logentries
+options head
+       - name: ${1:task_description}
+         logentries:
+           path: ${2}
+           #####
+           state: ${3:present}
+           name: ${4}
+           logtype: ${5}
+
+snippet pagerduty
+options head
+       - name: ${1:task_description}
+         pagerduty:
+           name: ${2}
+           passwd: ${3}
+           state: ${4}
+           token: ${5}
+           user: ${6}
+           requester_id: ${7}
+           #####
+           service: ${8}
+           minutes: ${9}
+           hours: ${10:1}
+           validate_certs: ${11:yes}
+           desc: ${12:Created by Ansible}
+
+snippet monit
+options head
+       - name: ${1:task_description}
+         monit:
+           state: ${2}
+           name: ${3}
+           #####
+
+snippet stackdriver
+options head
+       - name: ${1:task_description}
+         stackdriver:
+           key: ${2}
+           #####
+           repository: ${3}
+           level: ${4:INFO}
+           annotated_by: ${5:Ansible}
+           deployed_to: ${6}
+           deployed_by: ${7:Ansible}
+           instance_id: ${8}
+           msg: ${9}
+           event_epoch: ${10}
+           revision_id: ${11}
+           event: ${12}
+
+snippet zabbix_group
+options head
+       - name: ${1:task_description}
+         zabbix_group:
+           host_groups: ${2}
+           login_password: ${3}
+           login_user: ${4}
+           server_url: ${5}
+           #####
+           state: ${6:present}
+           timeout: ${7:10}
+
+snippet zabbix_hostmacro
+options head
+       - name: ${1:task_description}
+         zabbix_hostmacro:
+           macro_value: ${2}
+           macro_name: ${3}
+           login_user: ${4}
+           server_url: ${5}
+           host_name: ${6}
+           login_password: ${7}
+           #####
+           state: ${8:present}
+           timeout: ${9:10}
+
+snippet github_hooks
+options head
+       - name: ${1:task_description}
+         github_hooks:
+           repo: ${2}
+           oauthkey: ${3}
+           user: ${4}
+           action: ${5}
+           #####
+           content_type: ${6:json}
+           validate_certs: ${7:yes}
+           hookurl: ${8}
+
+snippet bzr
+options head
+       - name: ${1:task_description}
+         bzr:
+           dest: ${2}
+           name: ${3}
+           #####
+           executable: ${4}
+           version: ${5:head}
+           force: ${6:no}
+
+snippet cs_template
+options head
+       - name: ${1:task_description}
+         cs_template:
+           displaytext: ${2}
+           name: ${3}
+           #####
+           is_featured: ${4}
+           format: ${5}
+           vm: ${6}
+           is_extractable: ${7}
+           is_public: ${8}
+           hypervisor: ${9:none}
+           requires_hvm: ${10}
+           poll_async: ${11:True}
+           password_enabled: ${12}
+           zone: ${13}
+           url: ${14}
+           bits: ${15:64}
+           sshkey_enabled: ${16}
+           is_dynamically_scalable: ${17}
+           project: ${18}
+           state: ${19:present}
+           is_ready: ${20}
+           details: ${21}
+           checksum: ${22}
+           is_routing: ${23}
+           os_type: ${24}
+           template_tag: ${25}
+           template_filter: ${26:self}
+           snapshot: ${27}
+
+snippet cs_portforward
+options head
+       - name: ${1:task_description}
+         cs_portforward:
+           public_port: ${2}
+           private_port: ${3}
+           ip_address: ${4}
+           #####
+           vm_guest_ip: ${5}
+           domain: ${6}
+           protocol: ${7:tcp}
+           open_firewall: ${8}
+           zone: ${9}
+           vm: ${10}
+           public_end_port: ${11}
+           project: ${12}
+           state: ${13:present}
+           private_end_port: ${14}
+           account: ${15}
+           poll_async: ${16:True}
+
+snippet cs_facts
+options head
+       - name: ${1:task_description}
+         cs_facts:
+           #####
+           filter: ${2}
+
+snippet cs_iso
+options head
+       - name: ${1:task_description}
+         cs_iso:
+           name: ${2}
+           #####
+           is_featured: ${3}
+           zone: ${4}
+           url: ${5}
+           checksum: ${6}
+           is_dynamically_scalable: ${7}
+           project: ${8}
+           bootable: ${9:True}
+           state: ${10:present}
+           is_ready: ${11}
+           domain: ${12}
+           account: ${13}
+           is_public: ${14}
+           os_type: ${15}
+           iso_filter: ${16:self}
+
+snippet cs_firewall
+options head
+       - name: ${1:task_description}
+         cs_firewall:
+           #####
+           icmp_code: ${2}
+           domain: ${3}
+           protocol: ${4:tcp}
+           network: ${5}
+           type: ${6:ingress}
+           end_port: ${7}
+           account: ${8}
+           project: ${9}
+           state: ${10:present}
+           start_port: ${11}
+           poll_async: ${12:True}
+           cidr: ${13:0.0.0.0/0}
+           icmp_type: ${14}
+           ip_address: ${15}
+
+snippet cs_staticnat
+options head
+       - name: ${1:task_description}
+         cs_staticnat:
+           ip_address: ${2}
+           #####
+           vm_guest_ip: ${3}
+           account: ${4}
+           poll_async: ${5:True}
+           zone: ${6}
+           vm: ${7}
+           project: ${8}
+           state: ${9:present}
+           domain: ${10}
+
+snippet cs_securitygroup_rule
+options head
+       - name: ${1:task_description}
+         cs_securitygroup_rule:
+           security_group: ${2}
+           #####
+           icmp_code: ${3}
+           protocol: ${4:tcp}
+           start_port: ${5}
+           user_security_group: ${6}
+           end_port: ${7}
+           project: ${8}
+           state: ${9:present}
+           poll_async: ${10:True}
+           cidr: ${11:0.0.0.0/0}
+           icmp_type: ${12}
+           type: ${13:ingress}
+
+snippet cs_account
+options head
+       - name: ${1:task_description}
+         cs_account:
+           name: ${2}
+           #####
+           username: ${3}
+           first_name: ${4}
+           last_name: ${5}
+           account_type: ${6:user}
+           password: ${7}
+           domain: ${8:ROOT}
+           state: ${9:present}
+           timezone: ${10}
+           poll_async: ${11:True}
+           network_domain: ${12}
+           email: ${13}
+
+snippet cs_affinitygroup
+options head
+       - name: ${1:task_description}
+         cs_affinitygroup:
+           name: ${2}
+           #####
+           account: ${3}
+           poll_async: ${4:True}
+           state: ${5:present}
+           affinty_type: ${6}
+           domain: ${7}
+           description: ${8}
+
+snippet cs_network
+options head
+       - name: ${1:task_description}
+         cs_network:
+           name: ${2}
+           #####
+           domain: ${3}
+           end_ipv6: ${4}
+           vlan: ${5}
+           clean_up: ${6}
+           netmask: ${7}
+           network_offering: ${8}
+           displaytext: ${9}
+           vpc: ${10}
+           start_ip: ${11}
+           gateway: ${12}
+           gateway_ipv6: ${13}
+           isolated_pvlan: ${14}
+           account: ${15}
+           acl_type: ${16:account}
+           poll_async: ${17:True}
+           zone: ${18}
+           start_ipv6: ${19}
+           cidr_ipv6: ${20}
+           project: ${21}
+           state: ${22:present}
+           end_ip: ${23}
+           network_domain: ${24}
+
+snippet cs_instancegroup
+options head
+       - name: ${1:task_description}
+         cs_instancegroup:
+           name: ${2}
+           #####
+           project: ${3}
+           account: ${4}
+           state: ${5:present}
+           domain: ${6}
+
+snippet cs_instance
+options head
+       - name: ${1:task_description}
+         cs_instance:
+           name: ${2}
+           #####
+           domain: ${3}
+           force: ${4}
+           disk_offering: ${5}
+           tags: ${6}
+           user_data: ${7}
+           ssh_key: ${8}
+           keyboard: ${9}
+           ip6_address: ${10}
+           service_offering: ${11}
+           ip_address: ${12}
+           networks: ${13}
+           security_groups: ${14}
+           display_name: ${15}
+           account: ${16}
+           group: ${17}
+           zone: ${18}
+           hypervisor: ${19}
+           disk_size: ${20}
+           project: ${21}
+           state: ${22:present}
+           iso: ${23}
+           template: ${24}
+           poll_async: ${25:True}
+           affinity_groups: ${26}
+
+snippet cs_project
+options head
+       - name: ${1:task_description}
+         cs_project:
+           name: ${2}
+           #####
+           account: ${3}
+           poll_async: ${4:True}
+           state: ${5:present}
+           displaytext: ${6}
+           domain: ${7}
+
+snippet cs_vmsnapshot
+options head
+       - name: ${1:task_description}
+         cs_vmsnapshot:
+           vm: ${2}
+           name: ${3}
+           #####
+           snapshot_memory: ${4}
+           domain: ${5}
+           poll_async: ${6:True}
+           description: ${7}
+           zone: ${8}
+           project: ${9}
+           state: ${10:present}
+           account: ${11}
+
+snippet cs_securitygroup
+options head
+       - name: ${1:task_description}
+         cs_securitygroup:
+           name: ${2}
+           #####
+           project: ${3}
+           state: ${4:present}
+           description: ${5}
+
+snippet cs_sshkeypair
+options head
+       - name: ${1:task_description}
+         cs_sshkeypair:
+           name: ${2}
+           #####
+           project: ${3}
+           public_key: ${4}
+           account: ${5}
+           state: ${6:present}
+           domain: ${7}
+
+snippet vmware_datacenter
+options head
+       - name: ${1:task_description}
+         vmware_datacenter:
+           username: ${2}
+           state: ${3}
+           password: ${4}
+           datacenter_name: ${5}
+           hostname: ${6}
+           #####
+
+snippet vsphere_copy
+options head
+       - name: ${1:task_description}
+         vsphere_copy:
+           src: ${2}
+           host: ${3}
+           datacenter: ${4}
+           path: ${5}
+           login: ${6}
+           password: ${7}
+           datastore: ${8}
+           #####
+
+snippet ec2_vpc_igw
+options head
+       - name: ${1:task_description}
+         ec2_vpc_igw:
+           vpc_id: ${2}
+           #####
+           aws_secret_key: ${3}
+           profile: ${4}
+           aws_access_key: ${5}
+           security_token: ${6}
+           state: ${7:present}
+           ec2_url: ${8}
+           validate_certs: ${9:yes}
+
+snippet sts_assume_role
+options head
+       - name: ${1:task_description}
+         sts_assume_role:
+           role_arn: ${2}
+           role_session_name: ${3}
+           #####
+           aws_secret_key: ${4}
+           profile: ${5}
+           aws_access_key: ${6}
+           security_token: ${7}
+           duration_seconds: ${8}
+           validate_certs: ${9:yes}
+           mfa_serial_number: ${10}
+           mfa_token: ${11}
+           ec2_url: ${12}
+           policy: ${13}
+           external_id: ${14}
+
+snippet ec2_eni
+options head
+       - name: ${1:task_description}
+         ec2_eni:
+           subnet_id: ${2}
+           #####
+           aws_secret_key: ${3}
+           profile: ${4}
+           aws_access_key: ${5}
+           description: ${6}
+           security_token: ${7}
+           validate_certs: ${8:yes}
+           device_index: ${9}
+           force_detach: ${10}
+           instance_id: ${11}
+           state: ${12:present}
+           security_groups: ${13}
+           ec2_url: ${14}
+           private_ip_address: ${15}
+           eni_id: ${16}
+           delete_on_termination: ${17}
+           source_dest_check: ${18}
+
+snippet ec2_win_password
+options head
+       - name: ${1:task_description}
+         ec2_win_password:
+           instance_id: ${2}
+           key_file: ${3}
+           #####
+           aws_secret_key: ${4}
+           profile: ${5}
+           aws_access_key: ${6}
+           security_token: ${7}
+           region: ${8}
+           key_passphrase: ${9}
+           wait_timeout: ${10:120}
+           ec2_url: ${11}
+           validate_certs: ${12:yes}
+           wait: ${13:no}
+
+snippet route53_zone
+options head
+       - name: ${1:task_description}
+         route53_zone:
+           zone: ${2}
+           #####
+           comment: ${3}
+           aws_secret_key: ${4}
+           aws_access_key: ${5}
+           vpc_region: ${6}
+           state: ${7:True}
+           profile: ${8}
+           ec2_url: ${9}
+           vpc_id: ${10}
+           security_token: ${11}
+           validate_certs: ${12:yes}
+
+snippet ec2_eni_facts
+options head
+       - name: ${1:task_description}
+         ec2_eni_facts:
+           #####
+           aws_secret_key: ${2}
+           profile: ${3}
+           aws_access_key: ${4}
+           security_token: ${5}
+           ec2_url: ${6}
+           validate_certs: ${7:yes}
+           eni_id: ${8}
+
+snippet dynamodb_table
+options head
+       - name: ${1:task_description}
+         dynamodb_table:
+           name: ${2}
+           #####
+           read_capacity: ${3:1}
+           hash_key_name: ${4}
+           range_key_type: ${5:STRING}
+           region: ${6}
+           write_capacity: ${7:1}
+           range_key_name: ${8}
+           state: ${9:present}
+           hash_key_type: ${10:STRING}
+
+snippet ec2_ami_copy
+options head
+       - name: ${1:task_description}
+         ec2_ami_copy:
+           region: ${2}
+           source_image_id: ${3}
+           source_region: ${4}
+           #####
+           aws_secret_key: ${5}
+           profile: ${6}
+           aws_access_key: ${7}
+           name: ${8}
+           security_token: ${9}
+           tags: ${10}
+           ec2_url: ${11}
+           wait: ${12:no}
+           validate_certs: ${13:yes}
+           wait_timeout: ${14:1200}
+           description: ${15}
+
+snippet s3_logging
+options head
+       - name: ${1:task_description}
+         s3_logging:
+           name: ${2}
+           #####
+           aws_secret_key: ${3}
+           profile: ${4}
+           aws_access_key: ${5}
+           security_token: ${6}
+           region: ${7}
+           target_prefix: ${8}
+           target_bucket: ${9}
+           state: ${10:present}
+           ec2_url: ${11}
+           validate_certs: ${12:yes}
+
+snippet cloudtrail
+options head
+       - name: ${1:task_description}
+         cloudtrail:
+           state: ${2}
+           #####
+           aws_secret_key: ${3}
+           aws_access_key: ${4}
+           name: ${5}
+           region: ${6}
+           include_global_events: ${7}
+           s3_bucket_prefix: ${8}
+           s3_key_prefix: ${9}
+
+snippet lxc_container
+options head
+       - name: ${1:task_description}
+         lxc_container:
+           name: ${2}
+           #####
+           archive_path: ${3:/tmp}
+           zfs_root: ${4}
+           container_log_level: ${5:INFO}
+           template_options: ${6}
+           container_command: ${7}
+           clone_name: ${8}
+           lxc_path: ${9}
+           container_config: ${10}
+           fs_type: ${11:ext4}
+           archive: ${12}
+           vg_name: ${13:lxc}
+           clone_snapshot: ${14}
+           container_log: ${15}
+           lv_name: ${16:$CONTAINER_NAME}
+           fs_size: ${17:5G}
+           archive_compression: ${18:gzip}
+           backing_store: ${19:dir}
+           state: ${20:started}
+           thinpool: ${21}
+           template: ${22:ubuntu}
+           directory: ${23}
+           config: ${24:/etc/lxc/default.conf}
+
+snippet rax_mon_notification_plan
+options head
+       - name: ${1:task_description}
+         rax_mon_notification_plan:
+           label: ${2}
+           #####
+           username: ${3}
+           warning_state: ${4}
+           identity_type: ${5:rackspace}
+           tenant_id: ${6}
+           region: ${7:DFW}
+           critical_state: ${8}
+           verify_ssl: ${9}
+           ok_state: ${10}
+           state: ${11}
+           env: ${12}
+           tenant_name: ${13}
+           credentials: ${14}
+           api_key: ${15}
+           auth_endpoint: ${16:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_clb_ssl
+options head
+       - name: ${1:task_description}
+         rax_clb_ssl:
+           loadbalancer: ${2}
+           #####
+           username: ${3}
+           private_key: ${4}
+           certificate: ${5}
+           enabled: ${6:True}
+           region: ${7:DFW}
+           https_redirect: ${8}
+           verify_ssl: ${9}
+           state: ${10:present}
+           wait_timeout: ${11:300}
+           intermediate_certificate: ${12}
+           secure_traffic_only: ${13}
+           env: ${14}
+           credentials: ${15}
+           secure_port: ${16:443}
+           api_key: ${17}
+           wait: ${18}
+
+snippet rax_mon_notification
+options head
+       - name: ${1:task_description}
+         rax_mon_notification:
+           label: ${2}
+           details: ${3}
+           notification_type: ${4}
+           #####
+           username: ${5}
+           credentials: ${6}
+           identity_type: ${7:rackspace}
+           tenant_id: ${8}
+           region: ${9:DFW}
+           verify_ssl: ${10}
+           state: ${11}
+           env: ${12}
+           tenant_name: ${13}
+           api_key: ${14}
+           auth_endpoint: ${15:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_mon_check
+options head
+       - name: ${1:task_description}
+         rax_mon_check:
+           entity_id: ${2}
+           check_type: ${3}
+           label: ${4}
+           #####
+           username: ${5}
+           tenant_name: ${6}
+           period: ${7}
+           disabled: ${8}
+           target_hostname: ${9}
+           credentials: ${10}
+           auth_endpoint: ${11:https://identity.api.rackspacecloud.com/v2.0/}
+           target_alias: ${12}
+           env: ${13}
+           identity_type: ${14:rackspace}
+           tenant_id: ${15}
+           region: ${16:DFW}
+           verify_ssl: ${17}
+           state: ${18}
+           details: ${19}
+           timeout: ${20}
+           monitoring_zones_poll: ${21}
+           api_key: ${22}
+           metadata: ${23}
+
+snippet rax_mon_alarm
+options head
+       - name: ${1:task_description}
+         rax_mon_alarm:
+           entity_id: ${2}
+           notification_plan_id: ${3}
+           check_id: ${4}
+           label: ${5}
+           #####
+           username: ${6}
+           tenant_name: ${7}
+           tenant_id: ${8}
+           region: ${9:DFW}
+           auth_endpoint: ${10:https://identity.api.rackspacecloud.com/v2.0/}
+           verify_ssl: ${11}
+           disabled: ${12}
+           identity_type: ${13:rackspace}
+           state: ${14:present}
+           env: ${15}
+           criteria: ${16}
+           credentials: ${17}
+           api_key: ${18}
+           metadata: ${19}
+
+snippet rax_mon_entity
+options head
+       - name: ${1:task_description}
+         rax_mon_entity:
+           label: ${2}
+           #####
+           username: ${3}
+           identity_type: ${4:rackspace}
+           tenant_id: ${5}
+           region: ${6:DFW}
+           auth_endpoint: ${7:https://identity.api.rackspacecloud.com/v2.0/}
+           verify_ssl: ${8}
+           state: ${9}
+           agent_id: ${10}
+           env: ${11}
+           tenant_name: ${12}
+           credentials: ${13}
+           api_key: ${14}
+           named_ip_addresses: ${15}
+           metadata: ${16}
+
+snippet gce_img
+options head
+       - name: ${1:task_description}
+         gce_img:
+           name: ${2}
+           #####
+           zone: ${3:us-central1-a}
+           service_account_email: ${4}
+           pem_file: ${5}
+           source: ${6}
+           state: ${7:present}
+           project_id: ${8}
+           description: ${9}
+
+snippet virt
+options head
+       - name: ${1:task_description}
+         virt:
+           name: ${2}
+           #####
+           xml: ${3}
+           state: ${4:no}
+           command: ${5}
+           uri: ${6}
+
+snippet proxmox_template
+options head
+       - name: ${1:task_description}
+         proxmox_template:
+           node: ${2}
+           api_host: ${3}
+           api_user: ${4}
+           #####
+           src: ${5}
+           force: ${6}
+           api_password: ${7}
+           storage: ${8:local}
+           state: ${9:present}
+           content_type: ${10:vztmpl}
+           timeout: ${11:30}
+           validate_certs: ${12}
+           template: ${13}
+
+snippet proxmox
+options head
+       - name: ${1:task_description}
+         proxmox:
+           vmid: ${2}
+           api_host: ${3}
+           api_user: ${4}
+           #####
+           node: ${5}
+           force: ${6}
+           cpuunits: ${7:1000}
+           api_password: ${8}
+           cpus: ${9:1}
+           ostemplate: ${10}
+           disk: ${11:3}
+           ip_address: ${12}
+           password: ${13}
+           searchdomain: ${14}
+           netif: ${15}
+           hostname: ${16}
+           storage: ${17:local}
+           state: ${18:present}
+           swap: ${19}
+           timeout: ${20:30}
+           memory: ${21:512}
+           nameserver: ${22}
+           validate_certs: ${23}
+           onboot: ${24}
+
+snippet ovirt
+options head
+       - name: ${1:task_description}
+         ovirt:
+           user: ${2}
+           password: ${3}
+           url: ${4}
+           instance_name: ${5}
+           #####
+           instance_mem: ${6}
+           instance_cores: ${7:1}
+           instance_cpus: ${8:1}
+           image: ${9}
+           instance_disksize: ${10}
+           instance_nic: ${11}
+           instance_network: ${12:rhevm}
+           sdomain: ${13}
+           instance_os: ${14}
+           zone: ${15}
+           disk_alloc: ${16:thin}
+           region: ${17}
+           instance_type: ${18:server}
+           state: ${19:present}
+           resource_type: ${20}
+           disk_int: ${21:virtio}
+
+snippet clc_group
+options head
+       - name: ${1:task_description}
+         clc_group:
+           name: ${2}
+           #####
+           state: ${3:present}
+           parent: ${4}
+           wait: ${5:True}
+           location: ${6}
+           description: ${7}
+
+snippet clc_publicip
+options head
+       - name: ${1:task_description}
+         clc_publicip:
+           server_ids: ${2}
+           ports: ${3}
+           #####
+           state: ${4:present}
+           protocol: ${5:TCP}
+           wait: ${6:True}
+
+snippet profitbricks
+options head
+       - name: ${1:task_description}
+         profitbricks:
+           image: ${2}
+           name: ${3}
+           #####
+           lan: ${4:1}
+           auto_increment: ${5:True}
+           ram: ${6:2048}
+           instance_ids: ${7}
+           subscription_password: ${8}
+           wait_timeout: ${9:600}
+           assign_public_ip: ${10}
+           wait: ${11:yes}
+           count: ${12:1}
+           datacenter: ${13}
+           remove_boot_volume: ${14:yes}
+           subscription_user: ${15}
+           volume_size: ${16:10}
+           state: ${17:present}
+           location: ${18:us/las}
+           bus: ${19:VIRTIO}
+           cores: ${20:2}
+
+snippet webfaction_mailbox
+options head
+       - name: ${1:task_description}
+         webfaction_mailbox:
+           mailbox_password: ${2}
+           login_name: ${3}
+           mailbox_name: ${4}
+           login_password: ${5}
+           #####
+           state: ${6:present}
+
+snippet webfaction_domain
+options head
+       - name: ${1:task_description}
+         webfaction_domain:
+           login_name: ${2}
+           name: ${3}
+           login_password: ${4}
+           #####
+           state: ${5:present}
+           subdomains: ${6}
+
+snippet webfaction_site
+options head
+       - name: ${1:task_description}
+         webfaction_site:
+           name: ${2}
+           host: ${3}
+           login_password: ${4}
+           login_name: ${5}
+           #####
+           subdomains: ${6}
+           state: ${7:present}
+           https: ${8:false}
+           site_apps: ${9}
+
+snippet webfaction_db
+options head
+       - name: ${1:task_description}
+         webfaction_db:
+           name: ${2}
+           login_password: ${3}
+           type: ${4}
+           login_name: ${5}
+           #####
+           machine: ${6}
+           state: ${7:present}
+           password: ${8:None}
+
+snippet webfaction_app
+options head
+       - name: ${1:task_description}
+         webfaction_app:
+           name: ${2}
+           login_password: ${3}
+           type: ${4}
+           login_name: ${5}
+           #####
+           machine: ${6}
+           state: ${7:present}
+           autostart: ${8:no}
+           open_port: ${9}
+           extra_info: ${10}
+
+snippet elasticsearch_plugin
+options head
+       - name: ${1:task_description}
+         elasticsearch_plugin:
+           name: ${2}
+           #####
+           state: ${3:present}
+           version: ${4:None}
+           timeout: ${5:1m}
+           url: ${6:None}
+           plugin_dir: ${7:/usr/share/elasticsearch/plugins/}
+           plugin_bin: ${8:/usr/share/elasticsearch/bin/plugin}
+
+snippet dpkg_selections
+options head
+       - name: ${1:task_description}
+         dpkg_selections:
+           selection: ${2}
+           name: ${3}
+           #####
+
+snippet homebrew
+options head
+       - name: ${1:task_description}
+         homebrew:
+           #####
+           update_homebrew: ${2:no}
+           install_options: ${3}
+           state: ${4:present}
+           upgrade_all: ${5:no}
+           name: ${6:None}
+
+snippet layman
+options head
+       - name: ${1:task_description}
+         layman:
+           name: ${2}
+           #####
+           list_url: ${3}
+           state: ${4:present}
+
+snippet pkg5
+options head
+       - name: ${1:task_description}
+         pkg5:
+           name: ${2}
+           #####
+           accept_licenses: ${3}
+           state: ${4:present}
+
+snippet zypper
+options head
+       - name: ${1:task_description}
+         zypper:
+           name: ${2}
+           #####
+           disable_recommends: ${3:yes}
+           state: ${4:present}
+           type: ${5:package}
+           disable_gpg_check: ${6:no}
+
+snippet portage
+options head
+       - name: ${1:task_description}
+         portage:
+           #####
+           nodeps: ${2}
+           onlydeps: ${3}
+           newuse: ${4}
+           oneshot: ${5}
+           update: ${6}
+           deep: ${7}
+           sync: ${8}
+           depclean: ${9}
+           noreplace: ${10}
+           verbose: ${11}
+           getbinpkg: ${12}
+           package: ${13}
+           quiet: ${14}
+           state: ${15:present}
+           changed_use: ${16}
+           usepkgonly: ${17}
+
+snippet opkg
+options head
+       - name: ${1:task_description}
+         opkg:
+           name: ${2}
+           #####
+           state: ${3:present}
+           update_cache: ${4:no}
+
+snippet pkgng
+options head
+       - name: ${1:task_description}
+         pkgng:
+           name: ${2}
+           #####
+           cached: ${3}
+           state: ${4:present}
+           pkgsite: ${5}
+           annotation: ${6}
+
+snippet pkgin
+options head
+       - name: ${1:task_description}
+         pkgin:
+           name: ${2}
+           #####
+           state: ${3:present}
+
+snippet portinstall
+options head
+       - name: ${1:task_description}
+         portinstall:
+           name: ${2}
+           #####
+           state: ${3:present}
+           use_packages: ${4:True}
+
+snippet svr4pkg
+options head
+       - name: ${1:task_description}
+         svr4pkg:
+           state: ${2}
+           name: ${3}
+           #####
+           category: ${4}
+           src: ${5}
+           zone: ${6:all}
+           response_file: ${7}
+           proxy: ${8}
+
+snippet swdepot
+options head
+       - name: ${1:task_description}
+         swdepot:
+           state: ${2}
+           name: ${3}
+           #####
+           depot: ${4}
+
+snippet pacman
+options head
+       - name: ${1:task_description}
+         pacman:
+           #####
+           recurse: ${2:no}
+           state: ${3:present}
+           update_cache: ${4:no}
+           name: ${5}
+
+snippet zypper_repository
+options head
+       - name: ${1:task_description}
+         zypper_repository:
+           #####
+           repo: ${2:none}
+           state: ${3:present}
+           name: ${4:none}
+           disable_gpg_check: ${5:no}
+           refresh: ${6:yes}
+           description: ${7:none}
+
+snippet homebrew_tap
+options head
+       - name: ${1:task_description}
+         homebrew_tap:
+           tap: ${2}
+           #####
+           state: ${3:present}
+
+snippet pkgutil
+options head
+       - name: ${1:task_description}
+         pkgutil:
+           state: ${2}
+           name: ${3}
+           #####
+           site: ${4}
+
+snippet macports
+options head
+       - name: ${1:task_description}
+         macports:
+           name: ${2}
+           #####
+           state: ${3:present}
+           update_cache: ${4:no}
+
+snippet homebrew_cask
+options head
+       - name: ${1:task_description}
+         homebrew_cask:
+           name: ${2}
+           #####
+           state: ${3:present}
+
+snippet pkg5_publisher
+options head
+       - name: ${1:task_description}
+         pkg5_publisher:
+           name: ${2}
+           #####
+           origin: ${3}
+           state: ${4:present}
+           mirror: ${5}
+           enabled: ${6}
+           sticky: ${7}
+
+snippet openbsd_pkg
+options head
+       - name: ${1:task_description}
+         openbsd_pkg:
+           state: ${2}
+           name: ${3}
+           #####
+
+snippet dnf
+options head
+       - name: ${1:task_description}
+         dnf:
+           name: ${2}
+           #####
+           state: ${3:present}
+           disablerepo: ${4}
+           enablerepo: ${5}
+           list: ${6}
+           disable_gpg_check: ${7:no}
+           conf_file: ${8}
+
+snippet urpmi
+options head
+       - name: ${1:task_description}
+         urpmi:
+           pkg: ${2}
+           #####
+           force: ${3:True}
+           state: ${4:present}
+           no-suggests: ${5:True}
+           update_cache: ${6}
+
+snippet cpanm
+options head
+       - name: ${1:task_description}
+         cpanm:
+           #####
+           mirror_only: ${2}
+           from_path: ${3}
+           name: ${4}
+           mirror: ${5}
+           locallib: ${6}
+           notest: ${7}
+
+snippet pear
+options head
+       - name: ${1:task_description}
+         pear:
+           name: ${2}
+           #####
+           state: ${3:present}
+
+snippet bower
+options head
+       - name: ${1:task_description}
+         bower:
+           path: ${2}
+           #####
+           offline: ${3}
+           version: ${4}
+           name: ${5}
+           state: ${6:present}
+
+snippet bundler
+options head
+       - name: ${1:task_description}
+         bundler:
+           #####
+           executable: ${2}
+           chdir: ${3:temporary working directory}
+           gemfile: ${4:Gemfile in current directory}
+           clean: ${5:no}
+           user_install: ${6:yes}
+           extra_args: ${7}
+           state: ${8:present}
+           deployment_mode: ${9:no}
+           binstub_directory: ${10}
+           exclude_groups: ${11}
+           local: ${12:no}
+           gem_path: ${13:RubyGems gem paths}
+
+snippet npm
+options head
+       - name: ${1:task_description}
+         npm:
+           #####
+           executable: ${2}
+           name: ${3}
+           global: ${4}
+           ignore_scripts: ${5}
+           state: ${6:present}
+           production: ${7}
+           registry: ${8}
+           version: ${9}
+           path: ${10}
+
+snippet composer
+options head
+       - name: ${1:task_description}
+         composer:
+           working_dir: ${2}
+           #####
+           prefer_source: ${3:no}
+           no_scripts: ${4:no}
+           prefer_dist: ${5:no}
+           command: ${6:install}
+           ignore_platform_reqs: ${7:no}
+           no_dev: ${8:yes}
+           no_plugins: ${9:no}
+           optimize_autoloader: ${10:yes}
+
+snippet maven_artifact
+options head
+       - name: ${1:task_description}
+         maven_artifact:
+           group_id: ${2}
+           artifact_id: ${3}
+           dest: ${4}
+           state: ${5:present}
+           #####
+           username: ${6}
+           extension: ${7:jar}
+           version: ${8:latest}
+           repository_url: ${9:http://repo1.maven.org/maven2}
+           password: ${10}
+           classifier: ${11}
+
+snippet ejabberd_user
+options head
+       - name: ${1:task_description}
+         ejabberd_user:
+           username: ${2}
+           host: ${3}
+           #####
+           password: ${4}
+           logging: ${5}
+           state: ${6:present}
+
+snippet jira
+options head
+       - name: ${1:task_description}
+         jira:
+           username: ${2}
+           uri: ${3}
+           operation: ${4}
+           password: ${5}
+           #####
+           comment: ${6}
+           description: ${7}
+           fields: ${8}
+           summary: ${9}
+           project: ${10}
+           assignee: ${11}
+           status: ${12}
+           issuetype: ${13}
+           issue: ${14}
+
+snippet jboss
+options head
+       - name: ${1:task_description}
+         jboss:
+           deployment: ${2}
+           #####
+           src: ${3}
+           deploy_path: ${4:/var/lib/jbossas/standalone/deployments}
+           state: ${5:present}
+
+snippet dnsimple
+options head
+       - name: ${1:task_description}
+         dnsimple:
+           #####
+           solo: ${2}
+           domain: ${3}
+           account_email: ${4}
+           record_ids: ${5}
+           value: ${6}
+           priority: ${7}
+           record: ${8}
+           state: ${9}
+           ttl: ${10:3600 (one hour)}
+           type: ${11}
+           account_api_token: ${12}
+
+snippet lldp
+options head
+       - name: ${1:task_description}
+         lldp:
+           #####
+
+snippet dnsmadeeasy
+options head
+       - name: ${1:task_description}
+         dnsmadeeasy:
+           domain: ${2}
+           account_secret: ${3}
+           account_key: ${4}
+           state: ${5}
+           #####
+           record_name: ${6}
+           record_ttl: ${7:1800}
+           record_type: ${8}
+           record_value: ${9}
+           validate_certs: ${10:yes}
+
+snippet snmp_facts
+options head
+       - name: ${1:task_description}
+         snmp_facts:
+           host: ${2}
+           version: ${3}
+           #####
+           username: ${4}
+           level: ${5}
+           privacy: ${6}
+           community: ${7}
+           authkey: ${8}
+           integrity: ${9}
+           privkey: ${10}
+
+snippet openvswitch_port
+options head
+       - name: ${1:task_description}
+         openvswitch_port:
+           bridge: ${2}
+           port: ${3}
+           #####
+           state: ${4:present}
+           set: ${5:None}
+           timeout: ${6:5}
+           external_ids: ${7}
+
+snippet openvswitch_bridge
+options head
+       - name: ${1:task_description}
+         openvswitch_bridge:
+           bridge: ${2}
+           #####
+           state: ${3:present}
+           timeout: ${4:5}
+
+snippet nmcli
+options head
+       - name: ${1:task_description}
+         nmcli:
+           conn_name: ${2}
+           state: ${3}
+           #####
+           ingress: ${4:None}
+           slavepriority: ${5:32}
+           path_cost: ${6:100}
+           vlandev: ${7:None}
+           forwarddelay: ${8:15}
+           primary: ${9:None}
+           hairpin: ${10:True}
+           egress: ${11:None}
+           ageingtime: ${12:300}
+           dns4: ${13:None}
+           arp_ip_target: ${14:None}
+           maxage: ${15:20}
+           vlanid: ${16:None}
+           priority: ${17:128}
+           gw4: ${18}
+           gw6: ${19:None}
+           master: ${20:None}
+           stp: ${21:None}
+           ifname: ${22:conn_name}
+           type: ${23}
+           miimon: ${24:100}
+           hellotime: ${25:2}
+           downdelay: ${26:None}
+           mac: ${27:None}
+           ip6: ${28:None}
+           ip4: ${29:None}
+           autoconnect: ${30:yes}
+           dns6: ${31}
+           mtu: ${32:1500}
+           arp_interval: ${33:None}
+           flags: ${34:None}
+           mode: ${35:balence-rr}
+           updelay: ${36:None}
+
+snippet haproxy
+options head
+       - name: ${1:task_description}
+         haproxy:
+           state: ${2}
+           host: ${3}
+           #####
+           socket: ${4:/var/run/haproxy.sock}
+           weight: ${5}
+           wait_interval: ${6:5}
+           wait: ${7}
+           wait_retries: ${8:25}
+           shutdown_sessions: ${9}
+           backend: ${10:auto-detected}
+
+snippet bigip_node
+options head
+       - name: ${1:task_description}
+         bigip_node:
+           state: ${2:present}
+           server: ${3}
+           host: ${4}
+           user: ${5}
+           password: ${6}
+           #####
+           session_state: ${7}
+           name: ${8}
+           monitor_state: ${9}
+           partition: ${10:Common}
+           validate_certs: ${11:yes}
+           description: ${12}
+
+snippet bigip_facts
+options head
+       - name: ${1:task_description}
+         bigip_facts:
+           include: ${2}
+           user: ${3}
+           password: ${4}
+           server: ${5}
+           #####
+           filter: ${6}
+           session: ${7:True}
+           validate_certs: ${8:yes}
+
+snippet bigip_pool_member
+options head
+       - name: ${1:task_description}
+         bigip_pool_member:
+           state: ${2:present}
+           server: ${3}
+           host: ${4}
+           user: ${5}
+           password: ${6}
+           port: ${7}
+           pool: ${8}
+           #####
+           session_state: ${9}
+           ratio: ${10}
+           description: ${11}
+           monitor_state: ${12}
+           partition: ${13:Common}
+           connection_limit: ${14}
+           rate_limit: ${15}
+           validate_certs: ${16:yes}
+
+snippet bigip_monitor_tcp
+options head
+       - name: ${1:task_description}
+         bigip_monitor_tcp:
+           user: ${2}
+           password: ${3}
+           name: ${4}
+           receive: ${5:none}
+           send: ${6:none}
+           server: ${7}
+           #####
+           interval: ${8:none}
+           parent: ${9:tcp}
+           ip: ${10:none}
+           port: ${11:none}
+           validate_certs: ${12:yes}
+           partition: ${13:Common}
+           state: ${14:present}
+           time_until_up: ${15:none}
+           timeout: ${16:none}
+           parent_partition: ${17:Common}
+           type: ${18:tcp}
+
+snippet bigip_monitor_http
+options head
+       - name: ${1:task_description}
+         bigip_monitor_http:
+           user: ${2}
+           password: ${3}
+           receive_disable: ${4:none}
+           name: ${5}
+           receive: ${6:none}
+           send: ${7:none}
+           server: ${8}
+           #####
+           interval: ${9:none}
+           parent: ${10:http}
+           ip: ${11:none}
+           port: ${12:none}
+           partition: ${13:Common}
+           state: ${14:present}
+           time_until_up: ${15:none}
+           timeout: ${16:none}
+           parent_partition: ${17:Common}
+           validate_certs: ${18:yes}
+
+snippet bigip_pool
+options head
+       - name: ${1:task_description}
+         bigip_pool:
+           name: ${2}
+           server: ${3}
+           user: ${4}
+           password: ${5}
+           #####
+           lb_method: ${6:round_robin}
+           quorum: ${7}
+           partition: ${8:Common}
+           slow_ramp_time: ${9}
+           state: ${10:present}
+           service_down_action: ${11}
+           port: ${12}
+           host: ${13}
+           validate_certs: ${14:yes}
+           monitors: ${15}
+           monitor_type: ${16}
+
+snippet netscaler
+options head
+       - name: ${1:task_description}
+         netscaler:
+           name: ${2:hostname}
+           nsc_host: ${3}
+           user: ${4}
+           password: ${5}
+           #####
+           type: ${6:server}
+           nsc_protocol: ${7:https}
+           action: ${8:disable}
+           validate_certs: ${9:yes}
+
+snippet a10_service_group
+options head
+       - name: ${1:task_description}
+         a10_service_group:
+           username: ${2}
+           service_group: ${3}
+           host: ${4}
+           password: ${5}
+           #####
+           servers: ${6}
+           service_group_protocol: ${7:tcp}
+           write_config: ${8:no}
+           service_group_method: ${9:round-robin}
+           validate_certs: ${10:yes}
+
+snippet a10_server
+options head
+       - name: ${1:task_description}
+         a10_server:
+           username: ${2}
+           server_name: ${3}
+           host: ${4}
+           password: ${5}
+           #####
+           server_ports: ${6}
+           server_status: ${7:enable}
+           state: ${8:present}
+           server_ip: ${9}
+
+snippet a10_virtual_server
+options head
+       - name: ${1:task_description}
+         a10_virtual_server:
+           username: ${2}
+           password: ${3}
+           host: ${4}
+           virtual_server: ${5}
+           #####
+           virtual_server_ports: ${6}
+           virtual_server_status: ${7:enable}
+           write_config: ${8:no}
+           virtual_server_ip: ${9}
+           validate_certs: ${10:yes}
+
+snippet expect
+options head
+       - name: ${1:task_description}
+         expect:
+           command: ${2}
+           responses: ${3}
+           #####
+           creates: ${4}
+           chdir: ${5}
+           timeout: ${6:30}
+           removes: ${7}
+           echo: ${8}
+
+snippet patch
+options head
+       - name: ${1:task_description}
+         patch:
+           src: ${2}
+           #####
+           strip: ${3:0}
+           remote_src: ${4:False}
+           dest: ${5}
+           binary: ${6:False}
+           basedir: ${7}
+           backup: ${8}
+
+snippet postgresql_db
+options head
+       - name: ${1:task_description}
+         postgresql_db:
+           name: ${2}
+           #####
+           encoding: ${3}
+           login_user: ${4}
+           lc_collate: ${5}
+           lc_ctype: ${6}
+           port: ${7:5432}
+           login_unix_socket: ${8}
+           state: ${9:present}
+           template: ${10}
+           login_password: ${11}
+           owner: ${12}
+           login_host: ${13:localhost}
+
+snippet postgresql_user
+options head
+       - name: ${1:task_description}
+         postgresql_user:
+           name: ${2}
+           #####
+           login_password: ${3}
+           no_password_changes: ${4:no}
+           login_user: ${5:postgres}
+           login_host: ${6:localhost}
+           expires: ${7}
+           db: ${8}
+           port: ${9:5432}
+           login_unix_socket: ${10}
+           state: ${11:present}
+           encrypted: ${12}
+           password: ${13}
+           role_attr_flags: ${14}
+           fail_on_user: ${15:yes}
+           priv: ${16}
+
+snippet postgresql_privs
+options head
+       - name: ${1:task_description}
+         postgresql_privs:
+           roles: ${2}
+           database: ${3}
+           #####
+           objs: ${4}
+           privs: ${5}
+           state: ${6:present}
+           unix_socket: ${7}
+           host: ${8}
+           login: ${9:postgres}
+           password: ${10}
+           type: ${11:table}
+           port: ${12:5432}
+           grant_option: ${13}
+           schema: ${14}
+
+snippet mysql_variables
+options head
+       - name: ${1:task_description}
+         mysql_variables:
+           variable: ${2}
+           #####
+           login_port: ${3}
+           login_unix_socket: ${4}
+           login_user: ${5}
+           login_host: ${6}
+           login_password: ${7}
+           value: ${8}
+
+snippet mysql_user
+options head
+       - name: ${1:task_description}
+         mysql_user:
+           name: ${2}
+           #####
+           login_port: ${3:3306}
+           update_password: ${4:always}
+           config_file: ${5:~/.my.cnf}
+           login_user: ${6}
+           login_host: ${7:localhost}
+           append_privs: ${8:no}
+           host: ${9:localhost}
+           login_unix_socket: ${10}
+           state: ${11:present}
+           login_password: ${12}
+           check_implicit_admin: ${13:no}
+           password: ${14}
+           priv: ${15}
+
+snippet mysql_db
+options head
+       - name: ${1:task_description}
+         mysql_db:
+           name: ${2}
+           #####
+           login_port: ${3:3306}
+           encoding: ${4}
+           login_user: ${5}
+           login_host: ${6:localhost}
+           login_unix_socket: ${7}
+           state: ${8:present}
+           login_password: ${9}
+           collation: ${10}
+           target: ${11}
+
+snippet service
+options head
+       - name: ${1:task_description}
+         service:
+           name: ${2}
+           #####
+           pattern: ${3}
+           enabled: ${4}
+           must_exist: ${5:True}
+           state: ${6}
+           sleep: ${7}
+           arguments: ${8}
+           runlevel: ${9:default}
+
+snippet user
+options head
+       - name: ${1:task_description}
+         user:
+           name: ${2}
+           #####
+           comment: ${3}
+           ssh_key_bits: ${4:2048}
+           update_password: ${5:always}
+           non_unique: ${6:no}
+           force: ${7:no}
+           ssh_key_type: ${8:rsa}
+           expires: ${9:None}
+           ssh_key_passphrase: ${10}
+           groups: ${11}
+           home: ${12}
+           move_home: ${13:no}
+           password: ${14}
+           generate_ssh_key: ${15:no}
+           append: ${16:no}
+           uid: ${17}
+           ssh_key_comment: ${18:ansible-generated on $HOSTNAME}
+           group: ${19}
+           createhome: ${20:yes}
+           system: ${21:no}
+           remove: ${22:no}
+           state: ${23:present}
+           ssh_key_file: ${24:.ssh/id_rsa}
+           login_class: ${25}
+           shell: ${26}
+
+snippet seboolean
+options head
+       - name: ${1:task_description}
+         seboolean:
+           state: ${2}
+           name: ${3}
+           #####
+           persistent: ${4}
+
+snippet hostname
+options head
+       - name: ${1:task_description}
+         hostname:
+           name: ${2}
+           #####
+
+snippet ping
+options head
+       - name: ${1:task_description}
+         ping:
+           #####
+
+snippet cron
+options head
+       - name: ${1:task_description}
+         cron:
+           #####
+           name: ${2}
+           hour: ${3:*}
+           job: ${4}
+           cron_file: ${5}
+           reboot: ${6:no}
+           month: ${7:*}
+           state: ${8:present}
+           special_time: ${9}
+           user: ${10:root}
+           backup: ${11}
+           day: ${12:*}
+           minute: ${13:*}
+           weekday: ${14:*}
+
+snippet sysctl
+options head
+       - name: ${1:task_description}
+         sysctl:
+           name: ${2}
+           #####
+           reload: ${3:yes}
+           state: ${4:present}
+           sysctl_set: ${5}
+           ignoreerrors: ${6}
+           sysctl_file: ${7:/etc/sysctl.conf}
+           value: ${8}
+
+snippet authorized_key
+options head
+       - name: ${1:task_description}
+         authorized_key:
+           user: ${2}
+           key: ${3}
+           #####
+           exclusive: ${4:no}
+           state: ${5:present}
+           key_options: ${6}
+           path: ${7:(homedir)+/.ssh/authorized_keys}
+           manage_dir: ${8:yes}
+
+snippet group
+options head
+       - name: ${1:task_description}
+         group:
+           name: ${2}
+           #####
+           state: ${3:present}
+           gid: ${4}
+           system: ${5:no}
+
+snippet selinux
+options head
+       - name: ${1:task_description}
+         selinux:
+           state: ${2}
+           #####
+           policy: ${3}
+           conf: ${4:/etc/selinux/config}
+
+snippet mount
+options head
+       - name: ${1:task_description}
+         mount:
+           src: ${2}
+           name: ${3}
+           fstype: ${4}
+           state: ${5}
+           #####
+           dump: ${6}
+           fstab: ${7:/etc/fstab}
+           passno: ${8}
+           opts: ${9}
+
+snippet setup
+options head
+       - name: ${1:task_description}
+         setup:
+           #####
+           filter: ${2:*}
+           fact_path: ${3:/etc/ansible/facts.d}
+
+snippet win_msi
+options head
+       - name: ${1:task_description}
+         win_msi:
+           path: ${2}
+           #####
+           creates: ${3}
+           state: ${4:present}
+
+snippet win_get_url
+options head
+       - name: ${1:task_description}
+         win_get_url:
+           url: ${2}
+           dest: ${3}
+           #####
+           force: ${4:True}
+
+snippet win_ping
+options head
+       - name: ${1:task_description}
+         win_ping:
+           #####
+           data: ${2:pong}
+
+snippet win_feature
+options head
+       - name: ${1:task_description}
+         win_feature:
+           name: ${2}
+           #####
+           include_management_tools: ${3}
+           include_sub_features: ${4}
+           state: ${5:present}
+           restart: ${6}
+
+snippet win_template
+options head
+       - name: ${1:task_description}
+         win_template:
+           dest: ${2}
+           src: ${3}
+           #####
+
+snippet win_stat
+options head
+       - name: ${1:task_description}
+         win_stat:
+           path: ${2}
+           #####
+           get_md5: ${3:True}
+
+snippet win_user
+options head
+       - name: ${1:task_description}
+         win_user:
+           name: ${2}
+           #####
+           update_password: ${3:always}
+           password: ${4}
+           description: ${5}
+           groups_action: ${6:replace}
+           password_expired: ${7}
+           state: ${8:present}
+           groups: ${9}
+           account_disabled: ${10}
+           fullname: ${11}
+           password_never_expires: ${12}
+           account_locked: ${13}
+           user_cannot_change_password: ${14}
+
+snippet win_service
+options head
+       - name: ${1:task_description}
+         win_service:
+           name: ${2}
+           #####
+           start_mode: ${3}
+           state: ${4}
+
+snippet win_copy
+options head
+       - name: ${1:task_description}
+         win_copy:
+           dest: ${2}
+           #####
+           src: ${3}
+
+snippet win_file
+options head
+       - name: ${1:task_description}
+         win_file:
+           path: ${2}
+           #####
+           state: ${3:file}
+
+snippet win_group
+options head
+       - name: ${1:task_description}
+         win_group:
+           name: ${2}
+           #####
+           state: ${3:present}
+           description: ${4}
+
+snippet git
+options head
+       - name: ${1:task_description}
+         git:
+           dest: ${2}
+           repo: ${3}
+           #####
+           force: ${4:no}
+           track_submodules: ${5:no}
+           reference: ${6}
+           verify_commit: ${7:no}
+           clone: ${8:yes}
+           update: ${9:yes}
+           ssh_opts: ${10:None}
+           bare: ${11:no}
+           recursive: ${12:yes}
+           executable: ${13}
+           remote: ${14:origin}
+           refspec: ${15}
+           accept_hostkey: ${16:no}
+           depth: ${17}
+           version: ${18:HEAD}
+           key_file: ${19:None}
+
+snippet subversion
+options head
+       - name: ${1:task_description}
+         subversion:
+           dest: ${2}
+           repo: ${3}
+           #####
+           username: ${4}
+           executable: ${5}
+           force: ${6:no}
+           export: ${7:no}
+           password: ${8}
+           revision: ${9:HEAD}
+
+snippet hg
+options head
+       - name: ${1:task_description}
+         hg:
+           repo: ${2}
+           dest: ${3}
+           #####
+           purge: ${4:no}
+           executable: ${5}
+           force: ${6:no}
+           revision: ${7}
+
+snippet os_keypair
+options head
+       - name: ${1:task_description}
+         os_keypair:
+           name: ${2:None}
+           #####
+           public_key: ${3:None}
+           state: ${4:present}
+           public_key_file: ${5:None}
+
+snippet keystone_user
+options head
+       - name: ${1:task_description}
+         keystone_user:
+           #####
+           tenant_description: ${2:None}
+           endpoint: ${3:http://127.0.0.1:35357/v2.0/}
+           login_user: ${4:admin}
+           token: ${5:None}
+           login_tenant_name: ${6:None}
+           state: ${7:present}
+           role: ${8:None}
+           user: ${9:None}
+           login_password: ${10:yes}
+           password: ${11:None}
+           email: ${12:None}
+           tenant: ${13:None}
+
+snippet os_floating_ip
+options head
+       - name: ${1:task_description}
+         os_floating_ip:
+           server: ${2}
+           #####
+           fixed_address: ${3}
+           network: ${4}
+           state: ${5:present}
+           floating_ip_address: ${6}
+           timeout: ${7:60}
+           wait: ${8}
+           reuse: ${9}
+
+snippet quantum_network
+options head
+       - name: ${1:task_description}
+         quantum_network:
+           login_tenant_name: ${2:yes}
+           login_password: ${3:yes}
+           login_username: ${4:admin}
+           name: ${5:None}
+           #####
+           region_name: ${6:None}
+           provider_network_type: ${7:None}
+           admin_state_up: ${8:True}
+           router_external: ${9}
+           tenant_name: ${10:None}
+           provider_physical_network: ${11:None}
+           state: ${12:present}
+           auth_url: ${13:http://127.0.0.1:35357/v2.0/}
+           shared: ${14}
+           provider_segmentation_id: ${15:None}
+
+snippet os_server_volume
+options head
+       - name: ${1:task_description}
+         os_server_volume:
+           volume: ${2}
+           server: ${3}
+           #####
+           device: ${4:None}
+           state: ${5:present}
+
+snippet os_network
+options head
+       - name: ${1:task_description}
+         os_network:
+           name: ${2}
+           #####
+           shared: ${3}
+           state: ${4:present}
+           admin_state_up: ${5:True}
+
+snippet quantum_subnet
+options head
+       - name: ${1:task_description}
+         quantum_subnet:
+           login_password: ${2:True}
+           login_username: ${3:admin}
+           cidr: ${4:None}
+           network_name: ${5:None}
+           name: ${6:None}
+           login_tenant_name: ${7:True}
+           #####
+           region_name: ${8:None}
+           tenant_name: ${9:None}
+           auth_url: ${10:http://127.0.0.1:35357/v2.0/}
+           allocation_pool_end: ${11:None}
+           enable_dhcp: ${12:True}
+           dns_nameservers: ${13:None}
+           state: ${14:present}
+           allocation_pool_start: ${15:None}
+           gateway_ip: ${16:None}
+           ip_version: ${17:4}
+
+snippet os_security_group_rule
+options head
+       - name: ${1:task_description}
+         os_security_group_rule:
+           security_group: ${2}
+           #####
+           direction: ${3:ingress}
+           protocol: ${4:None}
+           remote_ip_prefix: ${5}
+           port_range_max: ${6:None}
+           state: ${7:present}
+           port_range_min: ${8:None}
+           ethertype: ${9:IPv4}
+           remote_group: ${10}
+
+snippet os_subnet
+options head
+       - name: ${1:task_description}
+         os_subnet:
+           name: ${2}
+           cidr: ${3:None}
+           network_name: ${4}
+           #####
+           host_routes: ${5:None}
+           enable_dhcp: ${6:True}
+           dns_nameservers: ${7:None}
+           ipv6_ra_mode: ${8:None}
+           state: ${9:present}
+           allocation_pool_start: ${10:None}
+           gateway_ip: ${11:None}
+           ip_version: ${12:4}
+           ipv6_address_mode: ${13:None}
+           allocation_pool_end: ${14:None}
+
+snippet glance_image
+options head
+       - name: ${1:task_description}
+         glance_image:
+           login_password: ${2:yes}
+           login_username: ${3:admin}
+           name: ${4:None}
+           login_tenant_name: ${5:yes}
+           #####
+           region_name: ${6:None}
+           container_format: ${7:bare}
+           min_ram: ${8:None}
+           owner: ${9:None}
+           endpoint_type: ${10:publicURL}
+           auth_url: ${11:http://127.0.0.1:35357/v2.0/}
+           file: ${12:None}
+           min_disk: ${13:None}
+           is_public: ${14:yes}
+           disk_format: ${15:qcow2}
+           copy_from: ${16:None}
+           state: ${17:present}
+           timeout: ${18:180}
+
+snippet quantum_router_interface
+options head
+       - name: ${1:task_description}
+         quantum_router_interface:
+           login_tenant_name: ${2:yes}
+           login_password: ${3:yes}
+           login_username: ${4:admin}
+           subnet_name: ${5:None}
+           router_name: ${6:None}
+           #####
+           region_name: ${7:None}
+           tenant_name: ${8:None}
+           state: ${9:present}
+           auth_url: ${10:http://127.0.0.1:35357/v2.0/}
+
+snippet quantum_router
+options head
+       - name: ${1:task_description}
+         quantum_router:
+           login_tenant_name: ${2:yes}
+           login_password: ${3:yes}
+           login_username: ${4:admin}
+           name: ${5:None}
+           #####
+           region_name: ${6:None}
+           admin_state_up: ${7:True}
+           tenant_name: ${8:None}
+           state: ${9:present}
+           auth_url: ${10:http://127.0.0.1:35357/v2.0/}
+
+snippet os_client_config
+options head
+       - name: ${1:task_description}
+         os_client_config:
+           #####
+           clouds: ${2}
+
+snippet os_server_actions
+options head
+       - name: ${1:task_description}
+         os_server_actions:
+           server: ${2}
+           #####
+           action: ${3:present}
+           timeout: ${4:180}
+           wait: ${5:yes}
+
+snippet quantum_floating_ip
+options head
+       - name: ${1:task_description}
+         quantum_floating_ip:
+           login_password: ${2:yes}
+           instance_name: ${3:None}
+           login_tenant_name: ${4:yes}
+           login_username: ${5:admin}
+           network_name: ${6:None}
+           #####
+           region_name: ${7:None}
+           state: ${8:present}
+           auth_url: ${9:http://127.0.0.1:35357/v2.0/}
+           internal_network_name: ${10:None}
+
+snippet os_security_group
+options head
+       - name: ${1:task_description}
+         os_security_group:
+           name: ${2}
+           #####
+           state: ${3:present}
+           description: ${4:None}
+
+snippet nova_keypair
+options head
+       - name: ${1:task_description}
+         nova_keypair:
+           login_tenant_name: ${2:yes}
+           login_password: ${3:yes}
+           login_username: ${4:admin}
+           name: ${5:None}
+           #####
+           public_key: ${6:None}
+           region_name: ${7:None}
+           state: ${8:present}
+           auth_url: ${9:http://127.0.0.1:35357/v2.0/}
+
+snippet nova_compute
+options head
+       - name: ${1:task_description}
+         nova_compute:
+           image_name: ${2:None}
+           image_id: ${3:None}
+           login_password: ${4:yes}
+           login_username: ${5:admin}
+           name: ${6:None}
+           login_tenant_name: ${7:yes}
+           #####
+           region_name: ${8:None}
+           availability_zone: ${9:None}
+           key_name: ${10:None}
+           image_exclude: ${11}
+           flavor_include: ${12}
+           meta: ${13:None}
+           auth_url: ${14:http://127.0.0.1:35357/v2.0/}
+           wait_for: ${15:180}
+           auto_floating_ip: ${16:no}
+           scheduler_hints: ${17:None}
+           flavor_id: ${18:1}
+           nics: ${19:None}
+           floating_ips: ${20:None}
+           flavor_ram: ${21:1}
+           state: ${22:present}
+           security_groups: ${23:None}
+           user_data: ${24:None}
+           wait: ${25:yes}
+           config_drive: ${26:no}
+           floating_ip_pools: ${27:None}
+
+snippet os_ironic
+options head
+       - name: ${1:task_description}
+         os_ironic:
+           nics: ${2}
+           driver: ${3:None}
+           #####
+           uuid: ${4:None}
+           driver_info: ${5}
+           state: ${6:present}
+           ironic_url: ${7:None}
+           chassis_uuid: ${8:None}
+           skip_update_of_driver_password: ${9}
+           properties: ${10}
+           name: ${11:None}
+
+snippet os_image
+options head
+       - name: ${1:task_description}
+         os_image:
+           name: ${2:None}
+           #####
+           ramdisk: ${3:None}
+           kernel: ${4:None}
+           container_format: ${5:bare}
+           min_ram: ${6:None}
+           disk_format: ${7:qcow2}
+           filename: ${8:None}
+           owner: ${9:None}
+           state: ${10:present}
+           min_disk: ${11:None}
+           is_public: ${12:yes}
+           properties: ${13}
+
+snippet os_volume
+options head
+       - name: ${1:task_description}
+         os_volume:
+           display_name: ${2}
+           size: ${3:None}
+           #####
+           state: ${4:present}
+           display_description: ${5:None}
+           snapshot_id: ${6:None}
+           image: ${7:None}
+           volume_type: ${8:None}
+
+snippet os_server
+options head
+       - name: ${1:task_description}
+         os_server:
+           image: ${2}
+           name: ${3}
+           #####
+           security_groups: ${4:None}
+           key_name: ${5:None}
+           image_exclude: ${6}
+           flavor_include: ${7}
+           public_ip: ${8:yes}
+           meta: ${9:None}
+           flavor: ${10:1}
+           root_volume: ${11}
+           wait: ${12:yes}
+           userdata: ${13:None}
+           nics: ${14:None}
+           floating_ips: ${15:None}
+           flavor_ram: ${16:1}
+           state: ${17:present}
+           auto_floating_ip: ${18:yes}
+           timeout: ${19:180}
+           floating_ip_pools: ${20:None}
+           config_drive: ${21:no}
+
+snippet os_nova_flavor
+options head
+       - name: ${1:task_description}
+         os_nova_flavor:
+           name: ${2}
+           #####
+           disk: ${3}
+           ram: ${4}
+           ephemeral: ${5}
+           state: ${6:present}
+           vcpus: ${7}
+           swap: ${8}
+           rxtx_factor: ${9:1.0}
+           is_public: ${10:True}
+           flavorid: ${11:auto}
+
+snippet quantum_router_gateway
+options head
+       - name: ${1:task_description}
+         quantum_router_gateway:
+           router_name: ${2:None}
+           login_tenant_name: ${3:yes}
+           login_password: ${4:yes}
+           login_username: ${5:admin}
+           network_name: ${6:None}
+           #####
+           region_name: ${7:None}
+           state: ${8:present}
+           auth_url: ${9:http://127.0.0.1:35357/v2.0/}
+
+snippet os_object
+options head
+       - name: ${1:task_description}
+         os_object:
+           container: ${2}
+           #####
+           file: ${3}
+           state: ${4:present}
+           name: ${5}
+           container_access: ${6:private}
+
+snippet os_ironic_node
+options head
+       - name: ${1:task_description}
+         os_ironic_node:
+           #####
+           uuid: ${2:None}
+           power: ${3:present}
+           deploy: ${4:True}
+           state: ${5:present}
+           maintenance_reason: ${6:None}
+           ironic_url: ${7:None}
+           maintenance: ${8}
+           instance_info: ${9}
+           config_drive: ${10:None}
+
+snippet os_server_facts
+options head
+       - name: ${1:task_description}
+         os_server_facts:
+           server: ${2}
+           #####
+
+snippet os_auth
+options head
+       - name: ${1:task_description}
+         os_auth:
+snippet quantum_floating_ip_associate
+options head
+       - name: ${1:task_description}
+         quantum_floating_ip_associate:
+           instance_name: ${2:None}
+           login_tenant_name: ${3:True}
+           login_password: ${4:yes}
+           login_username: ${5:admin}
+           ip_address: ${6:None}
+           #####
+           region_name: ${7:None}
+           state: ${8:present}
+           auth_url: ${9:http://127.0.0.1:35357/v2.0/}
+
+snippet vsphere_guest
+options head
+       - name: ${1:task_description}
+         vsphere_guest:
+           username: ${2}
+           vcenter_hostname: ${3}
+           password: ${4}
+           guest: ${5}
+           #####
+           resource_pool: ${6:None}
+           force: ${7:no}
+           vm_disk: ${8}
+           vm_hw_version: ${9}
+           cluster: ${10:None}
+           vmware_guest_facts: ${11}
+           vm_extra_config: ${12}
+           template_src: ${13:None}
+           vm_nic: ${14}
+           esxi: ${15}
+           vm_hardware: ${16}
+           state: ${17:present}
+           from_template: ${18}
+           snapshot_to_clone: ${19:none}
+
+snippet ec2_vpc
+options head
+       - name: ${1:task_description}
+         ec2_vpc:
+           region: ${2}
+           state: ${3:present}
+           resource_tags: ${4}
+           cidr_block: ${5}
+           #####
+           aws_secret_key: ${6}
+           subnets: ${7}
+           aws_access_key: ${8}
+           route_tables: ${9}
+           dns_support: ${10:yes}
+           internet_gateway: ${11:no}
+           ec2_url: ${12}
+           vpc_id: ${13}
+           instance_tenancy: ${14:default}
+           wait_timeout: ${15:300}
+           profile: ${16}
+           security_token: ${17}
+           dns_hostnames: ${18:yes}
+           validate_certs: ${19:yes}
+           wait: ${20:no}
+
+snippet ec2_asg
+options head
+       - name: ${1:task_description}
+         ec2_asg:
+           name: ${2}
+           state: ${3}
+           launch_config_name: ${4}
+           #####
+           profile: ${5}
+           default_cooldown: ${6:300 seconds}
+           tags: ${7:None}
+           aws_access_key: ${8}
+           min_size: ${9}
+           wait_timeout: ${10:300}
+           health_check_period: ${11:500 seconds}
+           ec2_url: ${12}
+           load_balancers: ${13}
+           max_size: ${14}
+           health_check_type: ${15:EC2}
+           aws_secret_key: ${16}
+           lc_check: ${17:True}
+           availability_zones: ${18}
+           security_token: ${19}
+           replace_all_instances: ${20}
+           validate_certs: ${21:yes}
+           region: ${22}
+           replace_instances: ${23:None}
+           desired_capacity: ${24}
+           vpc_zone_identifier: ${25:None}
+           replace_batch_size: ${26:1}
+           wait_for_instances: ${27:True}
+
+snippet ec2_metric_alarm
+options head
+       - name: ${1:task_description}
+         ec2_metric_alarm:
+           name: ${2}
+           state: ${3}
+           #####
+           aws_secret_key: ${4}
+           comparison: ${5}
+           alarm_actions: ${6}
+           ok_actions: ${7}
+           security_token: ${8}
+           evaluation_periods: ${9}
+           metric: ${10}
+           description: ${11}
+           namespace: ${12}
+           period: ${13}
+           ec2_url: ${14}
+           profile: ${15}
+           insufficient_data_actions: ${16}
+           statistic: ${17}
+           threshold: ${18}
+           aws_access_key: ${19}
+           validate_certs: ${20:yes}
+           unit: ${21}
+           dimensions: ${22}
+
+snippet ec2_eip
+options head
+       - name: ${1:task_description}
+         ec2_eip:
+           #####
+           public_ip: ${2}
+           instance_id: ${3}
+           state: ${4:present}
+           in_vpc: ${5}
+           reuse_existing_ip_allowed: ${6}
+           region: ${7}
+
+snippet iam_policy
+options head
+       - name: ${1:task_description}
+         iam_policy:
+           iam_name: ${2}
+           iam_type: ${3}
+           state: ${4}
+           #####
+           aws_secret_key: ${5}
+           policy_document: ${6}
+           aws_access_key: ${7}
+           policy_name: ${8}
+           policy_json: ${9}
+           skip_duplicates: ${10:/}
+
+snippet ec2_vpc_net
+options head
+       - name: ${1:task_description}
+         ec2_vpc_net:
+           name: ${2}
+           cidr_block: ${3}
+           #####
+           aws_secret_key: ${4}
+           profile: ${5}
+           aws_access_key: ${6}
+           dns_support: ${7:True}
+           tags: ${8:None}
+           security_token: ${9}
+           ec2_url: ${10}
+           multi_ok: ${11}
+           state: ${12:present}
+           tenancy: ${13:default}
+           dns_hostnames: ${14:True}
+           validate_certs: ${15:yes}
+           dhcp_opts_id: ${16}
+
+snippet cloudformation
+options head
+       - name: ${1:task_description}
+         cloudformation:
+           stack_name: ${2}
+           region: ${3}
+           state: ${4}
+           #####
+           aws_secret_key: ${5}
+           profile: ${6}
+           aws_access_key: ${7}
+           disable_rollback: ${8:false}
+           notification_arns: ${9}
+           security_token: ${10}
+           tags: ${11}
+           stack_policy: ${12}
+           template_format: ${13:json}
+           template_parameters: ${14}
+           template_url: ${15}
+           template: ${16}
+           ec2_url: ${17}
+           validate_certs: ${18:yes}
+
+snippet ec2_elb
+options head
+       - name: ${1:task_description}
+         ec2_elb:
+           instance_id: ${2}
+           state: ${3}
+           #####
+           aws_secret_key: ${4}
+           profile: ${5}
+           aws_access_key: ${6}
+           security_token: ${7}
+           region: ${8}
+           wait_timeout: ${9}
+           ec2_url: ${10}
+           wait: ${11:True}
+           validate_certs: ${12:yes}
+           enable_availability_zone: ${13:True}
+           ec2_elbs: ${14:None}
+
+snippet ec2_tag
+options head
+       - name: ${1:task_description}
+         ec2_tag:
+           resource: ${2}
+           #####
+           aws_secret_key: ${3}
+           profile: ${4}
+           aws_access_key: ${5}
+           security_token: ${6}
+           region: ${7}
+           state: ${8:present}
+           ec2_url: ${9}
+           validate_certs: ${10:yes}
+
+snippet elasticache
+options head
+       - name: ${1:task_description}
+         elasticache:
+           name: ${2}
+           region: ${3}
+           state: ${4}
+           cache_subnet_group: ${5:None}
+           #####
+           engine: ${6:memcached}
+           aws_secret_key: ${7}
+           cache_port: ${8:none}
+           security_group_ids: ${9:['default']}
+           cache_engine_version: ${10:none}
+           ec2_url: ${11}
+           num_nodes: ${12}
+           profile: ${13}
+           node_type: ${14:cache.m1.small}
+           cache_security_groups: ${15:['default']}
+           hard_modify: ${16}
+           aws_access_key: ${17}
+           security_token: ${18}
+           zone: ${19:None}
+           validate_certs: ${20:yes}
+           wait: ${21:True}
+
+snippet ec2
+options head
+       - name: ${1:task_description}
+         ec2:
+           image: ${2}
+           instance_type: ${3}
+           #####
+           kernel: ${4}
+           monitoring: ${5}
+           user_data: ${6}
+           termination_protection: ${7}
+           private_ip: ${8}
+           spot_type: ${9:one-time}
+           ec2_url: ${10}
+           source_dest_check: ${11:True}
+           aws_secret_key: ${12}
+           spot_wait_timeout: ${13:600}
+           group: ${14}
+           zone: ${15}
+           exact_count: ${16}
+           ebs_optimized: ${17}
+           state: ${18:present}
+           placement_group: ${19}
+           key_name: ${20}
+           ramdisk: ${21}
+           count_tag: ${22}
+           vpc_subnet_id: ${23}
+           instance_ids: ${24}
+           tenancy: ${25:default}
+           profile: ${26}
+           assign_public_ip: ${27}
+           spot_price: ${28}
+           wait: ${29:no}
+           count: ${30:1}
+           aws_access_key: ${31}
+           security_token: ${32}
+           instance_profile_name: ${33}
+           region: ${34}
+           wait_timeout: ${35:300}
+           volumes: ${36}
+           instance_tags: ${37}
+           group_id: ${38}
+           validate_certs: ${39:yes}
+
+snippet ec2_ami_find
+options head
+       - name: ${1:task_description}
+         ec2_ami_find:
+           region: ${2}
+           #####
+           sort: ${3}
+           no_result_action: ${4:success}
+           sort_end: ${5}
+           sort_order: ${6:ascending}
+           owner: ${7}
+           is_public: ${8}
+           ami_id: ${9}
+           name: ${10}
+           ami_tags: ${11}
+           hypervisor: ${12}
+           sort_tag: ${13}
+           platform: ${14}
+           state: ${15:available}
+           sort_start: ${16}
+           architecture: ${17}
+           virtualization_type: ${18}
+
+snippet ec2_vol
+options head
+       - name: ${1:task_description}
+         ec2_vol:
+           #####
+           aws_secret_key: ${2}
+           profile: ${3}
+           aws_access_key: ${4}
+           name: ${5}
+           zone: ${6}
+           instance: ${7}
+           encrypted: ${8}
+           region: ${9}
+           volume_type: ${10:standard}
+           device_name: ${11}
+           volume_size: ${12}
+           state: ${13:present}
+           iops: ${14:100}
+           snapshot: ${15}
+           ec2_url: ${16}
+           security_token: ${17}
+           validate_certs: ${18:yes}
+           id: ${19}
+
+snippet iam
+options head
+       - name: ${1:task_description}
+         iam:
+           name: ${2}
+           iam_type: ${3}
+           state: ${4}
+           #####
+           new_name: ${5}
+           aws_secret_key: ${6}
+           update_password: ${7:always}
+           new_path: ${8}
+           security_token: ${9}
+           access_key_state: ${10}
+           key_count: ${11:1}
+           aws_access_key: ${12}
+           access_key_ids: ${13}
+           profile: ${14}
+           groups: ${15}
+           ec2_url: ${16}
+           path: ${17:/}
+           password: ${18}
+           validate_certs: ${19:yes}
+
+snippet ec2_elb_lb
+options head
+       - name: ${1:task_description}
+         ec2_elb_lb:
+           name: ${2}
+           state: ${3}
+           #####
+           profile: ${4}
+           subnets: ${5:None}
+           health_check: ${6:None}
+           purge_subnets: ${7}
+           aws_access_key: ${8}
+           zones: ${9}
+           ec2_url: ${10}
+           cross_az_load_balancing: ${11:no}
+           security_group_ids: ${12:None}
+           purge_zones: ${13}
+           aws_secret_key: ${14}
+           connection_draining_timeout: ${15}
+           security_token: ${16}
+           region: ${17}
+           listeners: ${18}
+           security_group_names: ${19:None}
+           purge_listeners: ${20:True}
+           scheme: ${21:internet-facing}
+           validate_certs: ${22:yes}
+           stickiness: ${23}
+
+snippet rds_subnet_group
+options head
+       - name: ${1:task_description}
+         rds_subnet_group:
+           region: ${2}
+           state: ${3:present}
+           name: ${4}
+           #####
+           aws_secret_key: ${5}
+           subnets: ${6}
+           aws_access_key: ${7}
+           description: ${8}
+           security_token: ${9}
+           profile: ${10}
+           ec2_url: ${11}
+           validate_certs: ${12:yes}
+
+snippet ec2_facts
+options head
+       - name: ${1:task_description}
+         ec2_facts:
+           #####
+           validate_certs: ${2:yes}
+
+snippet route53
+options head
+       - name: ${1:task_description}
+         route53:
+           zone: ${2}
+           record: ${3}
+           command: ${4}
+           type: ${5}
+           #####
+           profile: ${6}
+           security_token: ${7}
+           health_check: ${8}
+           weight: ${9}
+           ec2_url: ${10}
+           hosted_zone_id: ${11}
+           ttl: ${12:3600 (one hour)}
+           overwrite: ${13}
+           aws_secret_key: ${14}
+           aws_access_key: ${15}
+           alias_hosted_zone_id: ${16}
+           validate_certs: ${17:yes}
+           region: ${18}
+           retry_interval: ${19:500}
+           value: ${20}
+           alias: ${21}
+           private_zone: ${22}
+           vpc_id: ${23}
+           identifier: ${24}
+           failover: ${25}
+
+snippet s3
+options head
+       - name: ${1:task_description}
+         s3:
+           bucket: ${2}
+           mode: ${3}
+           #####
+           src: ${4}
+           dest: ${5}
+           object: ${6}
+           prefix: ${7}
+           marker: ${8}
+           overwrite: ${9:True}
+           aws_secret_key: ${10}
+           retries: ${11}
+           aws_access_key: ${12}
+           encrypt: ${13}
+           region: ${14}
+           max_keys: ${15:1000}
+           version: ${16}
+           s3_url: ${17}
+           metadata: ${18}
+           expiration: ${19:600}
+
+snippet rds
+options head
+       - name: ${1:task_description}
+         rds:
+           command: ${2}
+           region: ${3}
+           #####
+           db_engine: ${4}
+           iops: ${5}
+           backup_window: ${6}
+           backup_retention: ${7}
+           port: ${8}
+           security_groups: ${9}
+           size: ${10}
+           aws_secret_key: ${11}
+           subnet: ${12}
+           vpc_security_groups: ${13}
+           upgrade: ${14}
+           zone: ${15}
+           instance_type: ${16}
+           source_instance: ${17}
+           parameter_group: ${18}
+           multi_zone: ${19}
+           new_instance_name: ${20}
+           username: ${21}
+           tags: ${22}
+           db_name: ${23}
+           license_model: ${24}
+           password: ${25}
+           apply_immediately: ${26}
+           wait: ${27:no}
+           aws_access_key: ${28}
+           character_set_name: ${29}
+           option_group: ${30}
+           engine_version: ${31}
+           instance_name: ${32}
+           force_failover: ${33:no}
+           wait_timeout: ${34:300}
+           snapshot: ${35}
+           publicly_accessible: ${36}
+           maint_window: ${37}
+
+snippet ec2_key
+options head
+       - name: ${1:task_description}
+         ec2_key:
+           name: ${2}
+           #####
+           aws_secret_key: ${3}
+           profile: ${4}
+           aws_access_key: ${5}
+           security_token: ${6}
+           region: ${7}
+           key_material: ${8}
+           state: ${9:present}
+           wait_timeout: ${10:300}
+           ec2_url: ${11}
+           validate_certs: ${12:yes}
+           wait: ${13}
+
+snippet rds_param_group
+options head
+       - name: ${1:task_description}
+         rds_param_group:
+           name: ${2}
+           region: ${3}
+           state: ${4:present}
+           #####
+           engine: ${5}
+           aws_secret_key: ${6}
+           aws_access_key: ${7}
+           security_token: ${8}
+           immediate: ${9}
+           params: ${10}
+           ec2_url: ${11}
+           profile: ${12}
+           validate_certs: ${13:yes}
+           description: ${14}
+
+snippet iam_cert
+options head
+       - name: ${1:task_description}
+         iam_cert:
+           name: ${2}
+           state: ${3}
+           #####
+           new_name: ${4}
+           aws_secret_key: ${5}
+           dup_ok: ${6}
+           new_path: ${7}
+           cert: ${8}
+           key: ${9}
+           path: ${10:/}
+           aws_access_key: ${11}
+           cert_chain: ${12}
+
+snippet ec2_ami
+options head
+       - name: ${1:task_description}
+         ec2_ami:
+           #####
+           aws_secret_key: ${2}
+           profile: ${3}
+           aws_access_key: ${4}
+           name: ${5}
+           security_token: ${6}
+           delete_snapshot: ${7}
+           region: ${8}
+           tags: ${9}
+           state: ${10:present}
+           wait: ${11:no}
+           instance_id: ${12}
+           image_id: ${13}
+           no_reboot: ${14}
+           wait_timeout: ${15:300}
+           ec2_url: ${16}
+           device_mapping: ${17}
+           validate_certs: ${18:yes}
+           description: ${19}
+
+snippet ec2_group
+options head
+       - name: ${1:task_description}
+         ec2_group:
+           name: ${2}
+           description: ${3}
+           #####
+           aws_secret_key: ${4}
+           rules_egress: ${5}
+           aws_access_key: ${6}
+           purge_rules: ${7:true}
+           rules: ${8}
+           region: ${9}
+           state: ${10:present}
+           profile: ${11}
+           ec2_url: ${12}
+           vpc_id: ${13}
+           security_token: ${14}
+           validate_certs: ${15:yes}
+           purge_rules_egress: ${16:true}
+
+snippet ec2_ami_search
+options head
+       - name: ${1:task_description}
+         ec2_ami_search:
+           release: ${2}
+           distro: ${3}
+           #####
+           stream: ${4:server}
+           virt: ${5:paravirtual}
+           region: ${6:us-east-1}
+           arch: ${7:amd64}
+           validate_certs: ${8:yes}
+           store: ${9:ebs}
+
+snippet ec2_lc
+options head
+       - name: ${1:task_description}
+         ec2_lc:
+           name: ${2}
+           instance_type: ${3}
+           state: ${4}
+           #####
+           profile: ${5}
+           security_token: ${6}
+           kernel_id: ${7}
+           key_name: ${8}
+           ramdisk_id: ${9}
+           user_data: ${10}
+           image_id: ${11}
+           assign_public_ip: ${12}
+           instance_monitoring: ${13}
+           classic_link_vpc_id: ${14}
+           security_groups: ${15}
+           classic_link_vpc_security_groups: ${16}
+           aws_secret_key: ${17}
+           aws_access_key: ${18}
+           spot_price: ${19}
+           instance_profile_name: ${20}
+           region: ${21}
+           ebs_optimized: ${22}
+           ec2_url: ${23}
+           volumes: ${24}
+           validate_certs: ${25:yes}
+
+snippet ec2_snapshot
+options head
+       - name: ${1:task_description}
+         ec2_snapshot:
+           #####
+           aws_secret_key: ${2}
+           profile: ${3}
+           aws_access_key: ${4}
+           description: ${5}
+           security_token: ${6}
+           snapshot_tags: ${7}
+           region: ${8}
+           volume_id: ${9}
+           ec2_url: ${10}
+           device_name: ${11}
+           instance_id: ${12}
+           state: ${13:present}
+           wait_timeout: ${14}
+           snapshot_id: ${15}
+           validate_certs: ${16:yes}
+           wait: ${17:True}
+
+snippet ec2_scaling_policy
+options head
+       - name: ${1:task_description}
+         ec2_scaling_policy:
+           name: ${2}
+           asg_name: ${3}
+           state: ${4}
+           #####
+           aws_secret_key: ${5}
+           profile: ${6}
+           aws_access_key: ${7}
+           security_token: ${8}
+           adjustment_type: ${9}
+           min_adjustment_step: ${10}
+           scaling_adjustment: ${11}
+           cooldown: ${12}
+           ec2_url: ${13}
+           validate_certs: ${14:yes}
+
+snippet elasticache_subnet_group
+options head
+       - name: ${1:task_description}
+         elasticache_subnet_group:
+           region: ${2}
+           state: ${3:present}
+           name: ${4}
+           #####
+           aws_secret_key: ${5}
+           subnets: ${6}
+           aws_access_key: ${7}
+           description: ${8}
+           security_token: ${9}
+           profile: ${10}
+           ec2_url: ${11}
+           validate_certs: ${12:yes}
+
+snippet digital_ocean_domain
+options head
+       - name: ${1:task_description}
+         digital_ocean_domain:
+           #####
+           state: ${2:present}
+           name: ${3}
+           client_id: ${4}
+           ip: ${5}
+           api_key: ${6}
+           id: ${7}
+
+snippet digital_ocean_sshkey
+options head
+       - name: ${1:task_description}
+         digital_ocean_sshkey:
+           #####
+           state: ${2:present}
+           name: ${3}
+           client_id: ${4}
+           api_key: ${5}
+           id: ${6}
+           ssh_pub_key: ${7}
+
+snippet digital_ocean
+options head
+       - name: ${1:task_description}
+         digital_ocean:
+           #####
+           unique_name: ${2:no}
+           virtio: ${3:yes}
+           region_id: ${4}
+           backups_enabled: ${5:no}
+           user_data: ${6:None}
+           image_id: ${7}
+           wait_timeout: ${8:300}
+           api_token: ${9}
+           ssh_pub_key: ${10}
+           wait: ${11:yes}
+           name: ${12}
+           size_id: ${13}
+           id: ${14}
+           state: ${15:present}
+           command: ${16:droplet}
+           ssh_key_ids: ${17}
+           private_networking: ${18:no}
+
+snippet docker_image
+options head
+       - name: ${1:task_description}
+         docker_image:
+           name: ${2}
+           #####
+           nocache: ${3}
+           docker_url: ${4:unix://var/run/docker.sock}
+           docker_api_version: ${5:docker-py default remote API version}
+           state: ${6:present}
+           tag: ${7:latest}
+           timeout: ${8:600}
+           path: ${9}
+           dockerfile: ${10:Dockerfile}
+
+snippet docker
+options head
+       - name: ${1:task_description}
+         docker:
+           image: ${2}
+           #####
+           publish_all_ports: ${3}
+           tty: ${4}
+           insecure_registry: ${5}
+           links: ${6}
+           docker_user: ${7}
+           docker_url: ${8:${DOCKER_HOST} or unix://var/run/docker.sock}
+           pid: ${9:None}
+           docker_api_version: ${10:docker-py default remote API version}
+           tls_client_key: ${11:${DOCKER_CERT_PATH}/key.pem}
+           privileged: ${12}
+           use_tls: ${13}
+           password: ${14}
+           hostname: ${15}
+           lxc_conf: ${16}
+           tls_ca_cert: ${17:${DOCKER_CERT_PATH}/ca.pem}
+           state: ${18:started}
+           tls_client_cert: ${19:${DOCKER_CERT_PATH}/cert.pem}
+           env: ${20}
+           volumes_from: ${21}
+           net: ${22}
+           email: ${23}
+           username: ${24}
+           memory_limit: ${25}
+           log_driver: ${26:json-file}
+           expose: ${27}
+           stdin_open: ${28}
+           tls_hostname: ${29:Taken from docker_url}
+           domainname: ${30}
+           registry: ${31:DockerHub}
+           detach: ${32:True}
+           cpu_set: ${33}
+           pull: ${34:missing}
+           dns: ${35}
+           name: ${36}
+           signal: ${37:KILL}
+           restart_policy: ${38}
+           count: ${39:1}
+           extra_hosts: ${40}
+           command: ${41}
+           restart_policy_retry: ${42}
+           volumes: ${43}
+           ports: ${44}
+
+snippet rax_scaling_group
+options head
+       - name: ${1:task_description}
+         rax_scaling_group:
+           image: ${2}
+           min_entities: ${3}
+           flavor: ${4}
+           max_entities: ${5}
+           name: ${6}
+           server_name: ${7}
+           #####
+           files: ${8}
+           username: ${9}
+           key_name: ${10}
+           user_data: ${11}
+           verify_ssl: ${12}
+           cooldown: ${13}
+           credentials: ${14}
+           networks: ${15:['public', 'private']}
+           loadbalancers: ${16}
+           region: ${17:DFW}
+           disk_config: ${18:auto}
+           state: ${19:present}
+           meta: ${20}
+           env: ${21}
+           api_key: ${22}
+           config_drive: ${23}
+
+snippet rax_clb
+options head
+       - name: ${1:task_description}
+         rax_clb:
+           #####
+           username: ${2}
+           protocol: ${3:HTTP}
+           name: ${4}
+           algorithm: ${5:LEAST_CONNECTIONS}
+           env: ${6}
+           region: ${7:DFW}
+           verify_ssl: ${8}
+           vip_id: ${9}
+           state: ${10:present}
+           wait_timeout: ${11:300}
+           meta: ${12}
+           timeout: ${13:30}
+           credentials: ${14}
+           api_key: ${15}
+           type: ${16:PUBLIC}
+           port: ${17:80}
+           wait: ${18:no}
+
+snippet rax_identity
+options head
+       - name: ${1:task_description}
+         rax_identity:
+           #####
+           username: ${2}
+           identity_type: ${3:rackspace}
+           tenant_id: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           state: ${7:present}
+           env: ${8}
+           tenant_name: ${9}
+           credentials: ${10}
+           api_key: ${11}
+           auth_endpoint: ${12:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_dns_record
+options head
+       - name: ${1:task_description}
+         rax_dns_record:
+           name: ${2}
+           data: ${3}
+           type: ${4}
+           #####
+           comment: ${5}
+           username: ${6}
+           domain: ${7}
+           region: ${8:DFW}
+           verify_ssl: ${9}
+           server: ${10}
+           priority: ${11}
+           state: ${12:present}
+           env: ${13}
+           ttl: ${14:3600}
+           credentials: ${15}
+           api_key: ${16}
+           loadbalancer: ${17}
+
+snippet rax_dns
+options head
+       - name: ${1:task_description}
+         rax_dns:
+           #####
+           comment: ${2}
+           username: ${3}
+           name: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           state: ${7:present}
+           env: ${8}
+           ttl: ${9:3600}
+           credentials: ${10}
+           api_key: ${11}
+           email: ${12}
+
+snippet rax_cdb_user
+options head
+       - name: ${1:task_description}
+         rax_cdb_user:
+           #####
+           username: ${2}
+           verify_ssl: ${3}
+           env: ${4}
+           db_password: ${5}
+           region: ${6:DFW}
+           databases: ${7}
+           host: ${8:%}
+           state: ${9:present}
+           db_username: ${10}
+           cdb_id: ${11}
+           credentials: ${12}
+           api_key: ${13}
+
+snippet rax_facts
+options head
+       - name: ${1:task_description}
+         rax_facts:
+           #####
+           username: ${2}
+           tenant_name: ${3}
+           name: ${4}
+           identity_type: ${5:rackspace}
+           tenant_id: ${6}
+           region: ${7:DFW}
+           verify_ssl: ${8}
+           env: ${9}
+           address: ${10}
+           credentials: ${11}
+           api_key: ${12}
+           id: ${13}
+           auth_endpoint: ${14:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax
+options head
+       - name: ${1:task_description}
+         rax:
+           #####
+           files: ${2}
+           boot_volume_terminate: ${3}
+           tenant_name: ${4}
+           auto_increment: ${5:True}
+           image: ${6}
+           user_data: ${7}
+           boot_volume: ${8}
+           count_offset: ${9:1}
+           verify_ssl: ${10}
+           meta: ${11}
+           instance_ids: ${12}
+           tenant_id: ${13}
+           credentials: ${14}
+           region: ${15:DFW}
+           flavor: ${16}
+           networks: ${17:['public', 'private']}
+           wait: ${18:no}
+           boot_from_volume: ${19:no}
+           api_key: ${20}
+           group: ${21}
+           name: ${22}
+           identity_type: ${23:rackspace}
+           extra_client_args: ${24}
+           exact_count: ${25}
+           disk_config: ${26:auto}
+           auth_endpoint: ${27:https://identity.api.rackspacecloud.com/v2.0/}
+           count: ${28:1}
+           username: ${29}
+           state: ${30:present}
+           wait_timeout: ${31:300}
+           env: ${32}
+           key_name: ${33}
+           boot_volume_size: ${34:100}
+           extra_create_args: ${35}
+           config_drive: ${36}
+
+snippet rax_network
+options head
+       - name: ${1:task_description}
+         rax_network:
+           #####
+           username: ${2}
+           identity_type: ${3:rackspace}
+           tenant_id: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           label: ${7}
+           state: ${8:present}
+           env: ${9}
+           tenant_name: ${10}
+           credentials: ${11}
+           cidr: ${12}
+           api_key: ${13}
+           auth_endpoint: ${14:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_meta
+options head
+       - name: ${1:task_description}
+         rax_meta:
+           #####
+           username: ${2}
+           tenant_name: ${3}
+           name: ${4}
+           identity_type: ${5:rackspace}
+           tenant_id: ${6}
+           region: ${7:DFW}
+           verify_ssl: ${8}
+           meta: ${9}
+           env: ${10}
+           address: ${11}
+           credentials: ${12}
+           api_key: ${13}
+           id: ${14}
+           auth_endpoint: ${15:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_queue
+options head
+       - name: ${1:task_description}
+         rax_queue:
+           #####
+           username: ${2}
+           name: ${3}
+           region: ${4:DFW}
+           verify_ssl: ${5}
+           state: ${6:present}
+           env: ${7}
+           credentials: ${8}
+           api_key: ${9}
+
+snippet rax_files
+options head
+       - name: ${1:task_description}
+         rax_files:
+           container: ${2}
+           #####
+           username: ${3}
+           web_index: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           private: ${7}
+           state: ${8:present}
+           clear_meta: ${9:no}
+           meta: ${10}
+           env: ${11}
+           ttl: ${12}
+           web_error: ${13}
+           credentials: ${14}
+           api_key: ${15}
+           type: ${16:file}
+           public: ${17}
+
+snippet rax_clb_nodes
+options head
+       - name: ${1:task_description}
+         rax_clb_nodes:
+           load_balancer_id: ${2}
+           #####
+           username: ${3}
+           weight: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           state: ${7:present}
+           wait_timeout: ${8:30}
+           condition: ${9}
+           env: ${10}
+           address: ${11}
+           credentials: ${12}
+           api_key: ${13}
+           type: ${14}
+           port: ${15}
+           node_id: ${16}
+           wait: ${17:no}
+
+snippet rax_cbs
+options head
+       - name: ${1:task_description}
+         rax_cbs:
+           size: ${2:100}
+           volume_type: ${3:SATA}
+           state: ${4:present}
+           name: ${5}
+           #####
+           username: ${6}
+           api_key: ${7}
+           tenant_name: ${8}
+           description: ${9}
+           identity_type: ${10:rackspace}
+           tenant_id: ${11}
+           image: ${12}
+           auth_endpoint: ${13:https://identity.api.rackspacecloud.com/v2.0/}
+           verify_ssl: ${14}
+           meta: ${15}
+           env: ${16}
+           snapshot_id: ${17}
+           credentials: ${18}
+           wait: ${19:no}
+           region: ${20:DFW}
+           wait_timeout: ${21:300}
+
+snippet rax_cbs_attachments
+options head
+       - name: ${1:task_description}
+         rax_cbs_attachments:
+           volume: ${2}
+           device: ${3}
+           server: ${4}
+           state: ${5:present}
+           #####
+           username: ${6}
+           tenant_name: ${7}
+           verify_ssl: ${8}
+           wait_timeout: ${9:300}
+           credentials: ${10}
+           wait: ${11:no}
+           identity_type: ${12:rackspace}
+           tenant_id: ${13}
+           region: ${14:DFW}
+           auth_endpoint: ${15:https://identity.api.rackspacecloud.com/v2.0/}
+           env: ${16}
+           api_key: ${17}
+
+snippet rax_scaling_policy
+options head
+       - name: ${1:task_description}
+         rax_scaling_policy:
+           name: ${2}
+           scaling_group: ${3}
+           policy_type: ${4}
+           #####
+           username: ${5}
+           is_percent: ${6}
+           env: ${7}
+           region: ${8:DFW}
+           verify_ssl: ${9}
+           cron: ${10}
+           desired_capacity: ${11}
+           state: ${12:present}
+           cooldown: ${13}
+           at: ${14}
+           credentials: ${15}
+           api_key: ${16}
+           change: ${17}
+
+snippet rax_cdb
+options head
+       - name: ${1:task_description}
+         rax_cdb:
+           #####
+           username: ${2}
+           name: ${3}
+           region: ${4:DFW}
+           verify_ssl: ${5}
+           volume: ${6:2}
+           state: ${7:present}
+           wait_timeout: ${8:300}
+           env: ${9}
+           credentials: ${10}
+           flavor: ${11:1}
+           api_key: ${12}
+           wait: ${13:no}
+
+snippet rax_keypair
+options head
+       - name: ${1:task_description}
+         rax_keypair:
+           name: ${2}
+           #####
+           username: ${3}
+           public_key: ${4}
+           identity_type: ${5:rackspace}
+           tenant_id: ${6}
+           region: ${7:DFW}
+           verify_ssl: ${8}
+           state: ${9:present}
+           env: ${10}
+           tenant_name: ${11}
+           credentials: ${12}
+           api_key: ${13}
+           auth_endpoint: ${14:https://identity.api.rackspacecloud.com/v2.0/}
+
+snippet rax_files_objects
+options head
+       - name: ${1:task_description}
+         rax_files_objects:
+           container: ${2}
+           #####
+           username: ${3}
+           src: ${4}
+           dest: ${5}
+           region: ${6:DFW}
+           expires: ${7}
+           verify_ssl: ${8}
+           state: ${9:present}
+           clear_meta: ${10:no}
+           meta: ${11}
+           env: ${12}
+           credentials: ${13}
+           api_key: ${14}
+           type: ${15:file}
+           method: ${16:get}
+           structure: ${17:yes}
+
+snippet rax_cdb_database
+options head
+       - name: ${1:task_description}
+         rax_cdb_database:
+           #####
+           username: ${2}
+           name: ${3}
+           cdb_id: ${4}
+           region: ${5:DFW}
+           verify_ssl: ${6}
+           state: ${7:present}
+           collate: ${8:utf8_general_ci}
+           env: ${9}
+           credentials: ${10}
+           api_key: ${11}
+           character_set: ${12:utf8}
+
+snippet azure
+options head
+       - name: ${1:task_description}
+         azure:
+           image: ${2}
+           storage_account: ${3}
+           name: ${4}
+           location: ${5}
+           #####
+           role_size: ${6:Small}
+           virtual_network_name: ${7}
+           wait_timeout_redirects: ${8:300}
+           wait_timeout: ${9:600}
+           reset_pass_atlogon: ${10:no}
+           user: ${11}
+           auto_updates: ${12:no}
+           password: ${13}
+           os_type: ${14:linux}
+           wait: ${15:no}
+           management_cert_path: ${16}
+           hostname: ${17}
+           ssh_cert_path: ${18}
+           state: ${19:present}
+           subscription_id: ${20}
+           endpoints: ${21:22}
+           enable_winrm: ${22:yes}
+
+snippet gce_pd
+options head
+       - name: ${1:task_description}
+         gce_pd:
+           name: ${2}
+           #####
+           size_gb: ${3:10}
+           project_id: ${4}
+           zone: ${5:us-central1-b}
+           service_account_email: ${6}
+           image: ${7}
+           pem_file: ${8}
+           instance_name: ${9}
+           state: ${10:present}
+           snapshot: ${11}
+           detach_only: ${12:no}
+           disk_type: ${13:pd-standard}
+           mode: ${14:READ_ONLY}
+
+snippet gc_storage
+options head
+       - name: ${1:task_description}
+         gc_storage:
+           gcs_secret_key: ${2}
+           bucket: ${3}
+           gcs_access_key: ${4}
+           mode: ${5}
+           #####
+           src: ${6}
+           force: ${7:True}
+           permission: ${8:private}
+           dest: ${9}
+           object: ${10}
+           headers: ${11:{}}
+           expiration: ${12}
+
+snippet gce
+options head
+       - name: ${1:task_description}
+         gce:
+           zone: ${2:us-central1-a}
+           #####
+           tags: ${3}
+           image: ${4:debian-7}
+           service_account_permissions: ${5}
+           ip_forward: ${6:false}
+           pem_file: ${7}
+           machine_type: ${8:n1-standard-1}
+           network: ${9:default}
+           name: ${10}
+           external_ip: ${11:ephemeral}
+           service_account_email: ${12}
+           disks: ${13}
+           persistent_boot_disk: ${14:false}
+           disk_auto_delete: ${15:true}
+           state: ${16:present}
+           project_id: ${17}
+           instance_names: ${18}
+           metadata: ${19}
+
+snippet gce_lb
+options head
+       - name: ${1:task_description}
+         gce_lb:
+           #####
+           httphealthcheck_host: ${2}
+           protocol: ${3:tcp}
+           pem_file: ${4}
+           members: ${5}
+           httphealthcheck_port: ${6:80}
+           httphealthcheck_name: ${7}
+           name: ${8}
+           external_ip: ${9}
+           service_account_email: ${10}
+           region: ${11}
+           httphealthcheck_unhealthy_count: ${12:2}
+           httphealthcheck_healthy_count: ${13:2}
+           httphealthcheck_path: ${14:/}
+           port_range: ${15}
+           state: ${16:present}
+           httphealthcheck_timeout: ${17:5}
+           project_id: ${18}
+           httphealthcheck_interval: ${19:5}
+
+snippet gce_net
+options head
+       - name: ${1:task_description}
+         gce_net:
+           #####
+           fwname: ${2}
+           name: ${3}
+           src_range: ${4}
+           allowed: ${5}
+           src_tags: ${6}
+           pem_file: ${7}
+           state: ${8:present}
+           service_account_email: ${9}
+           ipv4_range: ${10}
+           project_id: ${11}
+           target_tags: ${12}
+
+snippet linode
+options head
+       - name: ${1:task_description}
+         linode:
+           #####
+           datacenter: ${2}
+           swap: ${3:512}
+           api_key: ${4}
+           name: ${5}
+           payment_term: ${6:1}
+           linode_id: ${7}
+           state: ${8:present}
+           wait_timeout: ${9:300}
+           plan: ${10}
+           distribution: ${11}
+           password: ${12}
+           ssh_pub_key: ${13}
+           wait: ${14:no}
+
+snippet add_host
+options head
+       - name: ${1:task_description}
+         add_host:
+           name: ${2}
+           #####
+           groups: ${3}
+
+snippet group_by
+options head
+       - name: ${1:task_description}
+         group_by:
+           key: ${2}
+           #####
+
+snippet rpm_key
+options head
+       - name: ${1:task_description}
+         rpm_key:
+           key: ${2}
+           #####
+           state: ${3:present}
+           validate_certs: ${4:yes}
+
+snippet apt_rpm
+options head
+       - name: ${1:task_description}
+         apt_rpm:
+           pkg: ${2}
+           #####
+           state: ${3:present}
+           update_cache: ${4}
+
+snippet apt_repository
+options head
+       - name: ${1:task_description}
+         apt_repository:
+           repo: ${2:none}
+           #####
+           update_cache: ${3:yes}
+           state: ${4:present}
+           validate_certs: ${5:yes}
+           mode: ${6:420}
+
+snippet rhn_channel
+options head
+       - name: ${1:task_description}
+         rhn_channel:
+           sysname: ${2}
+           name: ${3}
+           url: ${4}
+           password: ${5}
+           user: ${6}
+           #####
+           state: ${7:present}
+
+snippet apt_key
+options head
+       - name: ${1:task_description}
+         apt_key:
+           #####
+           keyserver: ${2:none}
+           url: ${3:none}
+           data: ${4:none}
+           keyring: ${5:none}
+           state: ${6:present}
+           file: ${7:none}
+           validate_certs: ${8:yes}
+           id: ${9:none}
+
+snippet package
+options head
+       - name: ${1:task_description}
+         package:
+           state: ${2}
+           name: ${3}
+           #####
+           use: ${4:auto}
+
+snippet apt
+options head
+       - name: ${1:task_description}
+         apt:
+           #####
+           dpkg_options: ${2:force-confdef,force-confold}
+           upgrade: ${3:no}
+           force: ${4:no}
+           name: ${5}
+           purge: ${6}
+           state: ${7:present}
+           update_cache: ${8}
+           default_release: ${9}
+           cache_valid_time: ${10}
+           deb: ${11}
+           install_recommends: ${12:True}
+
+snippet rhn_register
+options head
+       - name: ${1:task_description}
+         rhn_register:
+           #####
+           username: ${2}
+           channels: ${3}
+           state: ${4:present}
+           activationkey: ${5}
+           profilename: ${6}
+           password: ${7}
+           server_url: ${8:Current value of I(serverURL) from C(/etc/sysconfig/rhn/up2date) is the default}
+
+snippet yum
+options head
+       - name: ${1:task_description}
+         yum:
+           name: ${2}
+           #####
+           list: ${3}
+           disable_gpg_check: ${4:no}
+           conf_file: ${5}
+           state: ${6:present}
+           disablerepo: ${7}
+           update_cache: ${8:no}
+           enablerepo: ${9}
+           exclude: ${10}
+
+snippet redhat_subscription
+options head
+       - name: ${1:task_description}
+         redhat_subscription:
+           #####
+           username: ${2}
+           server_hostname: ${3:Current value from C(/etc/rhsm/rhsm.conf) is the default}
+           org_id: ${4}
+           state: ${5:present}
+           autosubscribe: ${6}
+           activationkey: ${7}
+           server_insecure: ${8:Current value from C(/etc/rhsm/rhsm.conf) is the default}
+           password: ${9}
+           rhsm_baseurl: ${10:Current value from C(/etc/rhsm/rhsm.conf) is the default}
+           pool: ${11:^$}
+
+snippet pip
+options head
+       - name: ${1:task_description}
+         pip:
+           #####
+           virtualenv: ${2}
+           virtualenv_site_packages: ${3:no}
+           virtualenv_command: ${4:virtualenv}
+           chdir: ${5}
+           requirements: ${6}
+           name: ${7}
+           virtualenv_python: ${8}
+           executable: ${9}
+           extra_args: ${10}
+           state: ${11:present}
+           version: ${12}
+
+snippet easy_install
+options head
+       - name: ${1:task_description}
+         easy_install:
+           name: ${2}
+           #####
+           virtualenv: ${3}
+           virtualenv_site_packages: ${4:no}
+           virtualenv_command: ${5:virtualenv}
+           state: ${6:present}
+           executable: ${7}
+
+snippet gem
+options head
+       - name: ${1:task_description}
+         gem:
+           name: ${2}
+           #####
+           include_dependencies: ${3:yes}
+           executable: ${4}
+           repository: ${5}
+           build_flags: ${6}
+           include_doc: ${7:no}
+           user_install: ${8:yes}
+           pre_release: ${9:no}
+           state: ${10:present}
+           version: ${11}
+           gem_source: ${12}
+
+snippet htpasswd
+options head
+       - name: ${1:task_description}
+         htpasswd:
+           name: ${2}
+           path: ${3}
+           #####
+           state: ${4:present}
+           create: ${5:yes}
+           password: ${6}
+           crypt_scheme: ${7:apr_md5_crypt}
+
+snippet supervisorctl
+options head
+       - name: ${1:task_description}
+         supervisorctl:
+           state: ${2}
+           name: ${3}
+           #####
+           username: ${4}
+           supervisorctl_path: ${5}
+           password: ${6}
+           config: ${7}
+           server_url: ${8}
+
+snippet apache2_module
+options head
+       - name: ${1:task_description}
+         apache2_module:
+           name: ${2}
+           #####
+           state: ${3:present}
+
+snippet django_manage
+options head
+       - name: ${1:task_description}
+         django_manage:
+           app_path: ${2}
+           command: ${3}
+           #####
+           virtualenv: ${4}
+           settings: ${5}
+           pythonpath: ${6}
+           database: ${7}
+           apps: ${8}
+           cache_table: ${9}
+           merge: ${10}
+           skip: ${11}
+           link: ${12}
+           fixtures: ${13}
+           failfast: ${14:no}
+
+snippet async_status
+options head
+       - name: ${1:task_description}
+         async_status:
+           jid: ${2}
+           #####
+           mode: ${3:status}
+
+snippet debug
+options head
+       - name: ${1:task_description}
+         debug:
+           #####
+           msg: ${2:Hello world!}
+           var: ${3}
+
+snippet assert
+options head
+       - name: ${1:task_description}
+         assert:
+           that: ${2}
+           #####
+
+snippet wait_for
+options head
+       - name: ${1:task_description}
+         wait_for:
+           #####
+           host: ${2:127.0.0.1}
+           connect_timeout: ${3:5}
+           delay: ${4}
+           state: ${5:started}
+           timeout: ${6:300}
+           exclude_hosts: ${7}
+           search_regex: ${8}
+           path: ${9}
+           port: ${10}
+
+snippet fail
+options head
+       - name: ${1:task_description}
+         fail:
+           #####
+           msg: ${2:'Failed as requested from task'}
+
+snippet include_vars
+options head
+       - name: ${1:task_description}
+         include_vars:
+           free-form: ${2}
+           #####
+
+snippet set_fact
+options head
+       - name: ${1:task_description}
+         set_fact:
+           key_value: ${2}
+           #####
+
+snippet pause
+options head
+       - name: ${1:task_description}
+         pause:
+           #####
+           seconds: ${2}
+           minutes: ${3}
+           prompt: ${4}
+
+snippet fireball
+options head
+       - name: ${1:task_description}
+         fireball:
+           #####
+           minutes: ${2:30}
+           port: ${3:5099}
+
+snippet accelerate
+options head
+       - name: ${1:task_description}
+         accelerate:
+           #####
+           timeout: ${2:300}
+           minutes: ${3:30}
+           port: ${4:5099}
+           multi_key: ${5}
+           ipv6: ${6}
+
+snippet get_url
+options head
+       - name: ${1:task_description}
+         get_url:
+           url: ${2}
+           dest: ${3}
+           #####
+           url_password: ${4}
+           force: ${5:no}
+           use_proxy: ${6:yes}
+           force_basic_auth: ${7:no}
+           sha256sum: ${8}
+           timeout: ${9:10}
+           others: ${10}
+           url_username: ${11}
+           validate_certs: ${12:yes}
+
+snippet uri
+options head
+       - name: ${1:task_description}
+         uri:
+           url: ${2}
+           #####
+           body: ${3}
+           dest: ${4}
+           follow_redirects: ${5:safe}
+           force_basic_auth: ${6:no}
+           removes: ${7}
+           user: ${8}
+           others: ${9}
+           body_format: ${10:raw}
+           password: ${11}
+           HEADER_: ${12}
+           creates: ${13}
+           timeout: ${14:30}
+           status_code: ${15:200}
+           return_content: ${16:no}
+           validate_certs: ${17:yes}
+           method: ${18:GET}
+
+snippet slurp
+options head
+       - name: ${1:task_description}
+         slurp:
+           src: ${2}
+           #####
+
+snippet raw
+options head
+       - name: ${1:task_description}
+         raw:
+           free_form: ${2}
+           #####
+           executable: ${3}
+
+snippet command
+options head
+       - name: ${1:task_description}
+         command:
+           free_form: ${2}
+           #####
+           warn: ${3:True}
+           creates: ${4}
+           executable: ${5}
+           chdir: ${6}
+           removes: ${7}
+
+snippet script
+options head
+       - name: ${1:task_description}
+         script:
+           free_form: ${2}
+           #####
+           creates: ${3}
+           removes: ${4}
+
+snippet shell
+options head
+       - name: ${1:task_description}
+         shell:
+           free_form: ${2}
+           #####
+           warn: ${3:True}
+           creates: ${4}
+           executable: ${5}
+           chdir: ${6}
+           removes: ${7}
+
+snippet lineinfile
+options head
+       - name: ${1:task_description}
+         lineinfile:
+           dest: ${2}
+           #####
+           group: ${3}
+           insertbefore: ${4}
+           selevel: ${5:s0}
+           create: ${6:no}
+           seuser: ${7}
+           serole: ${8}
+           backrefs: ${9:no}
+           owner: ${10}
+           state: ${11:present}
+           follow: ${12:no}
+           mode: ${13}
+           others: ${14}
+           insertafter: ${15:EOF}
+           regexp: ${16}
+           line: ${17}
+           backup: ${18:no}
+           validate: ${19:None}
+           setype: ${20}
+
+snippet template
+options head
+       - name: ${1:task_description}
+         template:
+           src: ${2}
+           dest: ${3}
+           #####
+           force: ${4:yes}
+           selevel: ${5:s0}
+           seuser: ${6}
+           setype: ${7}
+           serole: ${8}
+           mode: ${9}
+           follow: ${10:no}
+           owner: ${11}
+           group: ${12}
+           validate: ${13}
+           backup: ${14:no}
+
+snippet stat
+options head
+       - name: ${1:task_description}
+         stat:
+           path: ${2}
+           #####
+           get_md5: ${3:True}
+           get_checksum: ${4:True}
+           follow: ${5}
+
+snippet find
+options head
+       - name: ${1:task_description}
+         find:
+           paths: ${2}
+           #####
+           file_type: ${3:file}
+           age: ${4}
+           contains: ${5}
+           recurse: ${6:no}
+           age_stamp: ${7:mtime}
+           patterns: ${8:*}
+           get_checksum: ${9:False}
+           follow: ${10:False}
+           hidden: ${11:False}
+           size: ${12}
+
+snippet ini_file
+options head
+       - name: ${1:task_description}
+         ini_file:
+           dest: ${2}
+           section: ${3}
+           #####
+           group: ${4}
+           option: ${5}
+           selevel: ${6:s0}
+           seuser: ${7}
+           setype: ${8}
+           value: ${9}
+           serole: ${10}
+           mode: ${11}
+           others: ${12}
+           owner: ${13}
+           follow: ${14:no}
+           backup: ${15:no}
+
+snippet copy
+options head
+       - name: ${1:task_description}
+         copy:
+           dest: ${2}
+           #####
+           src: ${3}
+           directory_mode: ${4}
+           force: ${5:yes}
+           selevel: ${6:s0}
+           seuser: ${7}
+           setype: ${8}
+           content: ${9}
+           serole: ${10}
+           mode: ${11}
+           follow: ${12:no}
+           owner: ${13}
+           group: ${14}
+           validate: ${15}
+           backup: ${16:no}
+
+snippet xattr
+options head
+       - name: ${1:task_description}
+         xattr:
+           name: ${2:None}
+           #####
+           key: ${3:None}
+           follow: ${4:True}
+           state: ${5:get}
+           value: ${6:None}
+
+snippet assemble
+options head
+       - name: ${1:task_description}
+         assemble:
+           src: ${2}
+           dest: ${3}
+           #####
+           ignore_hidden: ${4}
+           group: ${5}
+           remote_src: ${6:True}
+           selevel: ${7:s0}
+           seuser: ${8}
+           serole: ${9}
+           delimiter: ${10}
+           mode: ${11}
+           follow: ${12:no}
+           owner: ${13}
+           regexp: ${14}
+           backup: ${15:no}
+           setype: ${16}
+
+snippet acl
+options head
+       - name: ${1:task_description}
+         acl:
+           name: ${2}
+           #####
+           default: ${3}
+           entity: ${4}
+           state: ${5:query}
+           follow: ${6:True}
+           etype: ${7}
+           entry: ${8}
+           permissions: ${9}
+
+snippet unarchive
+options head
+       - name: ${1:task_description}
+         unarchive:
+           src: ${2}
+           dest: ${3}
+           #####
+           group: ${4}
+           selevel: ${5:s0}
+           list_files: ${6:no}
+           seuser: ${7}
+           setype: ${8}
+           creates: ${9}
+           serole: ${10}
+           mode: ${11}
+           owner: ${12}
+           follow: ${13:no}
+           copy: ${14:yes}
+
+snippet fetch
+options head
+       - name: ${1:task_description}
+         fetch:
+           dest: ${2}
+           src: ${3}
+           #####
+           validate_checksum: ${4:yes}
+           fail_on_missing: ${5:no}
+           flat: ${6}
+
+snippet synchronize
+options head
+       - name: ${1:task_description}
+         synchronize:
+           src: ${2}
+           dest: ${3}
+           #####
+           dirs: ${4:no}
+           partial: ${5}
+           links: ${6:the value of the archive option}
+           copy_links: ${7:no}
+           perms: ${8:the value of the archive option}
+           compress: ${9:yes}
+           rsync_timeout: ${10}
+           rsync_opts: ${11}
+           owner: ${12:the value of the archive option}
+           set_remote_user: ${13:True}
+           times: ${14:the value of the archive option}
+           rsync_path: ${15}
+           dest_port: ${16:22}
+           group: ${17:the value of the archive option}
+           existing_only: ${18:no}
+           recursive: ${19:the value of the archive option}
+           archive: ${20:yes}
+           mode: ${21:push}
+           checksum: ${22:no}
+           verify_host: ${23}
+           use_ssh_args: ${24:yes}
+           delete: ${25:no}
+
+snippet file
+options head
+       - name: ${1:task_description}
+         file:
+           path: ${2}
+           #####
+           src: ${3}
+           force: ${4:no}
+           selevel: ${5:s0}
+           seuser: ${6}
+           recurse: ${7:no}
+           serole: ${8}
+           group: ${9}
+           state: ${10:file}
+           mode: ${11}
+           follow: ${12:no}
+           owner: ${13}
+           setype: ${14}
+
+snippet replace
+options head
+       - name: ${1:task_description}
+         replace:
+           dest: ${2}
+           regexp: ${3}
+           #####
+           group: ${4}
+           selevel: ${5:s0}
+           seuser: ${6}
+           setype: ${7}
+           replace: ${8}
+           serole: ${9}
+           follow: ${10:no}
+           mode: ${11}
+           others: ${12}
+           owner: ${13}
+           validate: ${14:None}
+           backup: ${15:no}
+
