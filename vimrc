@@ -45,7 +45,8 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
 
 "" Custom bundles
-NeoBundle 'pearofducks/ansible-vim'
+NeoBundle 'MicahElliott/Rocannon'
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'davidhalter/jedi-vim'
