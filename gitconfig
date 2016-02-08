@@ -1,29 +1,34 @@
 [user]
-	name = Sergei Antipov
-	email = s.antipov@2gis.ru
-
-[core]
-	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	excludesfile = ~/.cvsignore
-
-[alias]
-	st = status -sb
-	ci = commit
-	br = branch -vv
-	co = checkout
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	cp = cherry-pick
-	pom = push origin master
-
+    name = Sergei Antipov
+    email = s.antipov@2gis.ru
 [color]
-	ui = true
-
+    diff = auto
+    status = auto
+    interactive = auto
+    branch = auto
+[alias]
+    co = checkout
+    pom = push origin master
+    st = status
+    br = branch
+    brs = for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ | column -t -s '*'
+    ci = commit
+    dh = diff HEAD
+    dc = diff --cached
+    dm = log --no-merges master..
+    nmerge = merge --no-ff
+    unstage = reset HEAD --
+    rsh = reset --hard
+    clh = clean -fdx
+    rollback = reset --soft HEAD~1
+    last = log -1 HEAD
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+    smb = submodule update --init --recursive
+[log]
+    date = local
+[core]
+    filemode = false
+    excludesfile = ~/.gitignore
+    autocrlf = input
 [push]
-	default = current
-
-[git-up "bundler"]
-	check = false
-	autoinstall = true
-
-[git-up "fetch"]
-	all = true
+    default = simple
