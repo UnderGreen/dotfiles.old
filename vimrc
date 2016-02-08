@@ -28,23 +28,36 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'mileszs/ack.vim'
 
 "" Color
 NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
 
 "" Custom bundles
+NeoBundle 'diepm/vim-rest-console'
 NeoBundle 'MicahElliott/Rocannon'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -63,7 +76,7 @@ NeoBundle 'pelodelfuego/vim-swoop'    " Very cool plugin. Search and move to con
 NeoBundle 'Yggdroot/indentLine'       " This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
 NeoBundle 'tpope/vim-jdaddy'          " must have mappings for working with JSON in Vim
 NeoBundle 'schickling/vim-bufonly'    " Close all buffers except current
-"NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-misc'
 "NeoBundle 'xolox/vim-session'
 NeoBundle 'idanarye/vim-merginal'     " Fugitive extension to manage and merge Git branches
 "NeoBundle 'xolox/vim-notes'           " The vim-notes plug-in for the Vim text editor makes it easy to manage your notes in Vim
@@ -71,6 +84,20 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'will133/vim-dirdiff'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'xolox/vim-easytags'
+NeoBundle 'vim-erlang/vim-erlang-runtime'
+NeoBundle 'vim-erlang/vim-erlang-compiler'
+NeoBundle 'vim-erlang/vim-erlang-tags'
+NeoBundle 'robbles/logstash.vim'
+
+" Do not load vim-pyenv until *.py is opened and
+" make sure that it is loaded after jedi-vim is loaded.
+NeoBundleLazy 'lambdalisue/vim-pyenv', {
+        \ 'depends': ['davidhalter/jedi-vim'],
+        \ 'autoload': {
+        \   'filetypes': ['python', 'python3'],
+        \ }}
 
 " Golang
 NeoBundle 'fatih/vim-go'
@@ -139,7 +166,7 @@ set number
 
 let no_buffers_menu=1
 highlight BadWhitespace ctermbg=red guibg=red
-colorscheme molokai
+colorscheme solarized
 
 set mousemodel=popup
 set t_Co=256
@@ -184,7 +211,7 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -203,16 +230,6 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 
-"" Startify configuration
-let g:startify_session_persistence = 1
-let g:startify_change_to_dir = 0
-let g:startify_files_number = 8
-let g:startify_bookmarks = ['~/.vimrc','~/Work/golang/']
-let g:startify_change_to_vcs_root = 1
-let g:rooter_patterns = ['tags', '.git', '.git/']
-let g:startify_custom_header = map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
-
-"" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -294,25 +311,26 @@ set autoread
 " Python-mode settings
 "=====================================================
 " отключаем автокомплит по коду (у нас вместо него используется jedi-vim)
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
+"let g:pymode_rope = 0
+"let g:pymode_rope_completion = 0
+"let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_vim_completion = 0
 
 " документация
-let g:pymode_doc = 0
+let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 " проверка кода
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 let g:pymode_lint_ignore="E501,W601,C0110"
 " провека кода после сохранения
-let g:pymode_lint_write = 1
+let g:pymode_lint_write = 0
 
 " поддержка virtualenv
-let g:pymode_virtualenv = 1
+let g:pymode_virtualenv = 0
 
 " установка breakpoints
-let g:pymode_breakpoint = 0
+let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_key = '<leader>p'
 
 " подстветка синтаксиса
@@ -467,3 +485,35 @@ let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*f
   " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0 "tagbar shows tags in order of they created in file
+let g:tagbar_foldlevel = 0 "close tagbar folds by default
+
+if jedi#init_python()
+  function! s:jedi_auto_force_py_version() abort
+    let major_version = pyenv#python#get_internal_major_version()
+    call jedi#force_py_version(major_version)
+  endfunction
+  augroup vim-pyenv-custom-augroup
+    autocmd! *
+    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+  augroup END
+endif
+
+function!   QuickFixOpenAll()
+  if empty(getqflist())
+    return
+  endif
+  let s:prev_val = ""
+  for d in getqflist()
+    let s:curr_val = bufname(d.bufnr)
+    if (s:curr_val != s:prev_val)
+      exec "edit " . s:curr_val
+    endif
+    let s:prev_val = s:curr_val
+  endfor
+endfunction
+
+command! QuickFixOpenAll         call QuickFixOpenAll()
